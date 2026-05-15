@@ -1,0 +1,94 @@
+{% sw_extends '@RHWebCmsElements/storefront/rhweb-custom/element/rhweb-subcategories/rhweb-subcategories-card.html.twig' %}
+
+{% block rhweb_custom_element_rhweb_subcategories_card %}
+    {# Static image array for categories without media #}
+    {% set staticImages = {
+        '71de1683e0e44efbbc8f0c0aa29b40cb': 'https://www.hanskniebes.de/media/49/85/39/1763549077/01.jpg?ts=1763549077',
+        '8510631d2bc6437ea1ff40b55caa2bcd': 'https://www.hanskniebes.de/media/07/b5/54/1763549077/02.jpg?ts=1763549077',
+        '856f58c5e7b943f9a2b67ae3cb2c4c33': 'https://www.hanskniebes.de/media/b5/20/a0/1763549077/06.jpg?ts=1763549077',
+        '1496cfd7df8e4975a7c697df232564da': 'https://www.hanskniebes.de/media/3d/14/37/1763549077/08.jpg?ts=1763549077',
+        '3723c3d0e78f43329d23bbff401a4675': 'https://www.hanskniebes.de/media/bb/e8/f9/1763549077/09.jpg?ts=1763549077',
+        'e7fda131c35e41b58dc187144deb9c16': 'https://www.hanskniebes.de/media/fa/62/7b/1763549077/04.jpg?ts=1763549077',
+        '7807c5209f154064a0128015bedadf4f': 'https://www.hanskniebes.de/media/84/b0/1b/1763549077/03.jpg?ts=1763549077',
+        '66c4f380987b4350b077a7ff8738b14b': 'https://www.hanskniebes.de/media/db/bf/37/1763549078/10.jpg?ts=1763549078',
+        '5d11282faa06442a960cf7f693f0df9b': 'https://www.hanskniebes.de/media/91/12/6e/1763549076/13.jpg?ts=1763549076',
+        'b577973fe5444557bc0079c79cb193e6': 'https://www.hanskniebes.de/media/8f/4f/26/1763549077/11.jpg?ts=1763549077',
+    } %}
+    {% if curCat.type != 'folder' and (curCat.type == 'page' or curCat.type == 'link') %}
+        {% set activateUrl = category_url(curCat) %}
+    {% endif %}
+
+    <div class="card {{ cardClasses|join(' ') }}" style="--rhweb-subcategories-background:{{ config.backgroundColor.value }}; border-color:{{ config.borderColor.value }}">
+        {% block rhweb_custom_element_rhweb_subcategories_card_media %}
+            {% if config.activateMedia.value %}
+                {% set imageUrl = curCat.media ? curCat.media.url : staticImages[curCat.id] %}
+                {% if imageUrl %}
+                    <div class="card-media" style="--rhweb-subcategories-height-image:{{ config.mediaHeight.value }}; --rhweb-subcategories-height-fit:{{ config.mediaFit.value }};">
+                        {% if activateUrl %}
+                            <a href="{{ activateUrl }}" title="{{ curCat.translated.name }}"{% if category_linknewtab(curCat) %} target="_blank"{% endif %}>
+                        {% endif %}
+                            <img src="{{ imageUrl }}" alt="{{ curCat.translated.name }}" title="{{ curCat.translated.name }}" class="img-fluid">
+                        {% if activateUrl %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+        {% block rhweb_custom_element_rhweb_subcategories_card_body %}
+            <div class="card-body">
+                {% block rhweb_custom_element_rhweb_subcategories_card_title %}
+                    {% if activateUrl %}
+                        <a href="{{ activateUrl }}" title="{{ curCat.translated.name }}" {% if category_linknewtab(curCat) %} target="_blank"{% endif %}>
+                    {% endif %}
+
+                    {% set activeCount = curCat.extensions.RHWebProductCount.get('count') %}
+                    {% set title = curCat.translated.name ~ (activeCount > 0 ? ' (' ~ activeCount ~ ')' : '') %}
+
+                        {% sw_include '@Storefront/storefront/rhweb-custom/utilities/rhweb-headline.html.twig' with {
+                            title: title,
+                            useClass: config.headlineUseClass.value,
+                            heading: config.headlineType.value,
+                            color: config.categoryColor.value
+                        } %}
+
+                    {% if activateUrl %}
+                        </a>
+                    {% endif %}
+                {% endblock %}
+                {% block rhweb_custom_element_rhweb_subcategories_card_description %}
+                    {% if config.activateDescription.value and curCat.translated.description %}
+                        <div class="card-text" style="color:{{ config.categoryDescriptionColor.value }}">
+                            {{ curCat.translated.description | raw }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block rhweb_custom_element_rhweb_subcategories_card_depth %}
+                    {% if config.categoryDepth.value > 1 %}
+                        {% sw_include '@Storefront/storefront/rhweb-custom/element/rhweb-subcategories/rhweb-subcategories-depth.html.twig' with{
+                            subCategories:curCat.children
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+                {% block rhweb_custom_element_rhweb_subcategories_card_button %}
+                    {% if config.activateButton.value and activateUrl %}
+                        {% set defaultText = "general.toCategory"|trans|sw_sanitize ~ " " ~ curCat.translated.name %}
+                        {% set buttonText = config.btnText.value ?: defaultText %}
+
+                        {% sw_include '@Storefront/storefront/rhweb-custom/utilities/rhweb-button.html.twig' with {
+                            type: config.btnType.value,
+                            outline: config.btnOutline.value,
+                            size: config.btnSize.value,
+                            block: config.btnBlock.value,
+                            url: activateUrl,
+                            newTab: category_linknewtab(curCat),
+                            text: buttonText
+                        } %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

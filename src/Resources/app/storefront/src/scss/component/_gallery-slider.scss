@@ -1,0 +1,27 @@
+.product-detail-media {
+	.cms-element-image-gallery {
+		padding: 20px;
+		img {
+			mix-blend-mode: darken;
+		}
+	}
+	.gallery-slider-controls {
+		button {
+			border: 1px solid #ccc;
+			height: 40px;
+    		width: 40px;
+    		&:hover {
+    			border-color: #B93A58;
+    		}
+    		.icon {
+    			width: auto;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+    			svg {
+    				top: 0;
+    			}
+    		}
+		}
+	}
+}

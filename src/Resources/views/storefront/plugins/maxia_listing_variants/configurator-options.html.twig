@@ -1,0 +1,91 @@
+{% sw_extends '@Storefront/storefront/plugins/maxia_listing_variants/configurator-options.html.twig' %}
+
+{% block plugins_maxia_listing_variants_configurator_option_radio %}
+    {% set break = false %}
+    {% set colorOptionLimit = 5 %}
+
+    {% for option in group.options %}
+        {% if not break %}
+            {% set optionIdentifier = formPrefix ~ '-' ~ ([group.id, option.id]|join('-')) %}
+            {% set isActive = false %}
+            {% set isCombinableCls = (option.combinable ? 'is-combinable' : 'not-combinable disabled')  %}
+
+            {% if not option.combinable and not baseConfig.markSoldOutCloseoutProducts %}
+                {% set isCombinableCls = 'is-combinable' %}
+            {% endif %}
+
+            {% set displayType = group.displayType %}
+            {% set media = false %}
+
+            {% if displayType == 'media' %}
+                {% if option.configuratorSetting.media %}
+                    {% set media = option.configuratorSetting.media %}
+                {% elseif option.media %}
+                    {% set media = option.media %}
+                {% endif %}
+            {% endif %}
+
+            {% set useColorOptionLimit = displayType == 'color' and group.options|length > colorOptionLimit %}
+            {% set effectiveMaxEntries = useColorOptionLimit ? colorOptionLimit : groupConfig.maxEntries %}
+            {% set shouldShowExpandButton = useColorOptionLimit or (limit and groupConfig.maxEntries < groupConfig.totalEntries) %}
+
+            {% if (variantsConfig.quickBuyActive or baseConfig.markSelectedOptions)
+                   and product.parentId and option.id in product.optionIds
+            %}
+                {% set isActive = true %}
+            {% endif %}
+
+            {% if shouldShowExpandButton and loop.index == effectiveMaxEntries %}
+                {% set break = true %}
+            {% endif %}
+
+            {% set variant = variantsConfig.optionProductMappings[option.id] %}
+
+            {% if not variant.productId %}
+                {% set variant = { productId: product.id, entity: product } %}
+            {% endif %}
+
+            {% block plugins_maxia_listing_variants_configurator_option_radio_inner %}
+                {% block plugins_maxia_listing_variants_configurator_option_radio_element %}
+                    {% set tagName = variantsConfig.quickBuyActive or baseConfig.linkMaskingEnabled ? 'div' : 'a' %}
+
+                    <{{ tagName }}{% block plugins_maxia_listing_variants_configurator_option_radio_element_attributes %}
+                        class="{% block plugins_maxia_listing_variants_configurator_option_radio_element_classes %}product-detail-configurator-option d-inline-flex{% endblock %}"
+                    {% if not variantsConfig.quickBuyActive and not baseConfig.linkMaskingEnabled %}
+                        href="{{ seoUrl('frontend.detail.page', {'productId': variant.productId }) }}"
+                    {% else %}
+                        data-product-id="{{ variant.productId }}"
+                    {% endif %}
+                    {% if tagName === 'a' %}
+                        aria-label="{{ option.translated.name|striptags }}"
+                    {% endif %}
+                    {%- endblock -%}
+                    >
+                    {% block plugins_maxia_listing_variants_configurator_option_radio_include %}
+                        {% if displayType == 'list' %}
+                            {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/layouts/list.html.twig' %}
+                        {% else %}
+                            {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/layouts/radio.html.twig' with {
+                                media: media,
+                                displayType: displayType,
+                                isActive: isActive
+                            } %}
+                        {% endif %}
+                    {% endblock %}
+                    </{{ tagName }}>
+                {% endblock %}
+
+                    {% block plugins_maxia_listing_variants_configurator_option_radio_expand_button %}
+                        {% if break %}
+                            {% sw_include '@Storefront/storefront/plugins/maxia_listing_variants/expand-button.html.twig' with {
+                                optionIdentifier: formPrefix ~ '-' ~ group.id ~ '-expand-btn',
+                                isActive: false,
+                                remainingEntries: group.options|length - loop.index,
+                                displayType: displayType
+                            } %}
+                        {% endif %}
+                {% endblock %}
+            {% endblock %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="HansAndKniebesTheme\Storefront\Page\categoryNavigationSubscriber">
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\CustomerLoginSubscriber">
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="tag.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Review Approval Subscriber -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\ReviewApprovalSubscriber">
+            <argument type="service" id="product_review.repository"/>
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="tag.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="language.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Product Page Extension -->
+        <service id="HansAndKniebesTheme\Storefront\Page\Product\ProductPageExtension">
+            <argument type="service" id="order.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Checkout Confirm Page Extension -->
+        <service id="HansAndKniebesTheme\Storefront\Page\Checkout\CheckoutConfirmPageExtension">
+            <argument type="service" id="newsletter_recipient.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Lenz Group Colour Subscriber -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\LenzGroupColorSubscriber">
+            <argument type="service" id="product.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Newsletter Subscriber -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\NewsletterSubscriber">
+            <argument type="service" id="Shopware\Core\Content\Newsletter\SalesChannel\NewsletterSubscribeRoute"/>
+            <argument type="service" id="request_stack"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- B2B Access Request Controller -->
+        <service id="HansAndKniebesTheme\Storefront\Controller\B2bAccessRequestController" public="true">
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <!-- Auto-accept B2B customer group registration only when AcrisTaxCS marked the VAT as valid -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bVatAutoAcceptSubscriber">
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="acris_tax_vat_id_validation_log.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Injects B2B customer group into the login/register page -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bLoginPageSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Checkout\Customer\SalesChannel\CustomerGroupRegistrationSettingsRoute"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+    </services>
+</container>

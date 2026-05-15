@@ -1,0 +1,36 @@
+.listing-page {
+	.cms-element-text {
+		h1 {
+			margin-bottom: 0;
+		}
+	}
+	.cms-block-image-text  {
+		.cms-block-container  {
+			padding-top: 0 !important;
+		}
+		.cms-block-container-row {
+			background: #f7f7f7;
+    		padding: 20px 0px;
+    		margin: 0;
+		}
+	}
+}
+//.cms-element-product-listing-actions .sorting {
+//	border-radius: 36px;
+//}
+.cms-image-container {
+	min-height: auto !important;
+	img {
+		object-fit: contain !important;
+		position: static !important;
+	}
+}
+
+//border-radius for filter, sorting, search
+.cms-element-product-listing-actions .sorting,
+button.filter-panel-item-toggle.btn,
+button.btn.btn-outline-primary.filter-panel-wrapper-toggle,
+input#header-main-search-input,
+.languages-menu.dropdown {
+  border-radius: 36px;
+}

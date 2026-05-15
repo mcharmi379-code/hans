@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/plugins/maxia_listing_variants/expand-button.html.twig' %}
+
+{% block plugins_maxia_listing_variants_configurator_expand_button %}
+    <a
+        class="product-detail-configurator-option d-inline-flex"
+        href="{{ seoUrl('frontend.detail.page', {'productId': product.parentId ? product.parentId : product.id}) }}"
+        aria-labelledby="{{ optionIdentifier }}-label"
+    >
+        {% block plugins_maxia_listing_variants_configurator_expand_button_inner %}
+            {% block plugins_maxia_listing_variants_configurator_expand_button_label %}
+                <span class="{% block plugins_maxia_listing_variants_configurator_expand_button_classes %}{% apply spaceless %}
+                                {% if displayType == 'list' %}maxia-variants-list-label{% else %}product-detail-configurator-option-label{% endif %}
+                                {% if displayType == 'color' and baseConfig.showColorCircles %} is-circle{% endif %}
+                                is-expand-button
+                                is-display-{{ displayType }}
+                                is-combinable
+                                {% if displayType != 'list' %} btn btn-outline-secondary d-inline-flex justify-content-center align-items-center{% endif %}
+                             {% endapply %}{% endblock %}"
+                      id="{{ optionIdentifier }}-label"
+                      title="{{ "maxia-listing-variants.expand-button.aria-label"|trans({'%remainingEntries%': remainingEntries})|trans|striptags }}"
+                      aria-label="{{ "maxia-listing-variants.expand-button.aria-label"|trans({'%remainingEntries%': remainingEntries})|trans|striptags }}"
+                >
+                    {% block plugins_maxia_listing_variants_configurator_expand_button_text_wrapper %}
+                        {% if displayType == 'list' %}
+                            {% block plugins_maxia_listing_variants_configurator_expand_button_text_list %}
+                                <span class="maxia-variants-list-text">
+                                    {{ "maxia-listing-variants.expand-button.long-title"|trans({'%remainingEntries%': remainingEntries})|raw }}
+                                </span>
+                            {% endblock %}
+                        {% else %}
+                            {% block plugins_maxia_listing_variants_configurator_expand_button_text %}
+                                <span class="maxia-expand-button-text">
+                                    {{ "maxia-listing-variants.expand-button.title"|trans({'%remainingEntries%': remainingEntries})|raw }}
+                                </span>
+                            {% endblock %}
+                        {% endif %}
+                    {% endblock %}
+                </span>
+            {% endblock %}
+        {% endblock %}
+    </a>
+{% endblock %}

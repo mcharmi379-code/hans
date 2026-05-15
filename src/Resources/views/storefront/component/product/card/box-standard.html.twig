@@ -1,0 +1,80 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_description %}
+    {% set lenzColours = product.extensions.lenzGroupColours %}
+    {% if lenzColours and lenzColours.colours|length > 0 %}
+        <div class="maxia-listing-variants">
+            <fieldset class="product-detail-configurator-group type-color mb-3">
+                <legend class="product-detail-configurator-group-title visually-hidden">Colour</legend>
+                <div class="product-detail-configurator-options d-flex flex-wrap gap-2">
+                    {% for colour in lenzColours.colours %}
+                        <a href="{{ seoUrl('frontend.detail.page', {productId: colour.productId}) }}"
+                           class="product-detail-configurator-option d-inline-flex"
+                           aria-label="{{ colour.name }}"
+                           title="{{ colour.name }}"
+                        >
+                            <span class="product-detail-configurator-option-label
+                                         is-display-color
+                                         {% if colour.productId == product.id %} is-active{% endif %}
+                                         is-combinable
+                                         {% if config('MaxiaListingVariants6').config.showColorCircles %} is-circle{% endif %}
+                                         btn btn-outline-secondary d-inline-flex justify-content-center align-items-center"
+                                  {% if colour.hex %}style="background-color: {{ colour.hex }}"{% endif %}
+                            >
+                                <span class="visually-hidden">{{ colour.name }}</span>
+                            </span>
+                        </a>
+                    {% endfor %}
+
+                    {% if lenzColours.remaining > 0 %}
+                        <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+                           class="product-detail-configurator-option d-inline-flex"
+                           title="+{{ lenzColours.remaining }}"
+                        >
+                            <span class="product-detail-configurator-option-label
+                                         is-display-color
+                                         is-expand-button
+                                         is-combinable
+                                         {% if config('MaxiaListingVariants6').config.showColorCircles %} is-circle{% endif %}
+                                         btn btn-outline-secondary d-inline-flex justify-content-center align-items-center"
+                            >
+                                <span class="maxia-expand-button-text">+{{ lenzColours.remaining }}</span>
+                            </span>
+                        </a>
+                    {% endif %}
+                </div>
+            </fieldset>
+        </div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_box_variant_characteristics %}
+    {% if not displayParent and product.variation|length > 0 %}
+        <div class="product-variant-characteristics">
+            <div class="product-variant-characteristics-text">
+                {% for variation in product.variation %}
+                    {{ variation.group }}:
+                    <span class="product-variant-characteristics-option">
+                        {{ variation.option }}
+                    </span>
+                    {% if product.variation|last != variation %}
+                        <span aria-hidden="true">|</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_price_swp_priceonrequestsix_contact_button_state1 %}
+    <div class="product-price-info">
+        <div class="product-price-wrapper">
+            <span class="product-price">
+                {% if SwpPriceOnRequestSix['config']['showCardText'] %}
+                {{ "swp-priceonrequestsix.detail.priceOnRequest-Show"|trans|sw_sanitize }}
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

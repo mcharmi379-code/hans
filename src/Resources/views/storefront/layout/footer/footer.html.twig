@@ -1,0 +1,49 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_vat %}
+    {% if showVatNotice or showVatNotice is not defined %}
+        <div class="footer-vat">
+            {% set shippingSnippetKey = context.taxState == 'gross' ? 'footer.includeVatTextPage' : 'footer.excludeVatTextPage' %}
+            {% set shippingCmsPageId = config('core.basicInformation.shippingPaymentInfoPage') %}
+            {% set widgetsUrl = shippingCmsPageId ? path('frontend.cms.page', { id: shippingCmsPageId }) : '#' %}
+            <p>
+                {{ shippingSnippetKey|trans({'%url%': widgetsUrl, '%star%': ''})|raw }}
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block layout_footer_navigation_hotline_content %}
+    {% set cmsPath = 'frontend.cms.page.full' %}
+
+    <div id="collapseFooterHotline"
+         class="footer-column-content collapse js-footer-column-content footer-contact mb-4 mb-md-0"
+         aria-labelledby="collapseFooterHotlineTitle"
+         role="listitem" xmlns="http://www.w3.org/1999/html">
+
+        <div class="footer-column-content-inner">
+            <p class="footer-contact-hotline">
+                {{ 'footer.serviceHotline'|trans|sw_sanitize }}
+            </p>
+            <span class="footer-contact-office-hours-title">
+                <strong>{{ 'footer.officeHoursTitle'|trans|sw_sanitize }}</strong>
+            </span>
+            <p class="office-hours">
+                {{ 'footer.officeHours'|trans|sw_sanitize }}
+            </p>
+        </div>
+
+        <div class="footer-contact-form">
+            {% set contactSnippetKey = 'footer.serviceContactTextPage' %}
+
+            {{ contactSnippetKey|trans({
+                '%url%': path(cmsPath, { id: config('core.basicInformation.contactPage') })
+            })|raw }}
+        </div>
+    </div>
+{% endblock %}
+{% block layout_footer_copyright %}
+    <div class="footer-copyright">
+{#        {% sw_icon 'shopware' style {'size':'xs'} %}#}
+        {{ "footer.copyrightInfo"|trans|sw_sanitize }}
+    </div>
+{% endblock %}

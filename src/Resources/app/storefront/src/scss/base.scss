@@ -1,0 +1,92 @@
+@import 'layout/footer';
+@import 'layout/header';
+@import 'layout/homePage';
+@import 'layout/aboutUs';
+@import 'layout/blogDetails';
+@import 'layout/customChanges';
+@import 'layout/navigation';
+
+@import 'page/content/breadcrumb';
+
+
+@import 'component/category-navigation';
+@import 'component/product-box';
+@import 'component/gallery-slider';
+
+@import 'page/brand/brand-list';
+@import 'page/brand/brand-detail';
+
+@import 'page/product-list/product-list';
+
+@import 'page/product-detail/product-detail';
+@import 'page/product-detail/_tabs';
+
+@import 'page/account/account';
+@import 'page/account/login';
+
+
+@import 'page/cms/cms';
+
+
+@import 'page/checkout/checkout';
+
+.product-slider {
+	.cms-section-default {
+		@media(min-width: 1366px) {
+			max-width: 1344px !important;
+		}
+	}
+	.cms-element-product-slider {
+		@media(min-width: 1366px) {
+			justify-content: center;
+		}
+	}
+	.base-slider {
+		@media(min-width: 1366px) {
+			overflow: visible;
+		}
+		.tns-outer {
+			@media(min-width: 1366px) {
+				max-width: 1244px;
+				overflow: hidden;
+			}
+		}
+		.product-slider-controls-container {
+			.product-slider-controls-prev  {
+				@media(min-width: 1366px) {
+					left: -37px !important;
+				}
+			}
+			.product-slider-controls-next  {
+				@media(min-width: 1366px) {
+					right: -52px !important;
+				}
+			}
+		} 
+	}
+}
+
+img.rhweb-cta-banner-image {
+    width: 100%;
+}
+.cms-element-rhweb-cta-banner {
+    position: relative;
+    .overlay {
+        position: absolute;
+        width: 100%;
+	    height: 100%;
+	    max-width: 100% !important;
+	    .rhweb-cta-banner-inner {
+	    	max-width: 845px;
+    		margin: 0 auto;
+	    }
+    }
+}
+.cms-element-rhweb-cta-banner.video-inactive {
+	padding:0 !important;
+}
+.image-slider-item>.cms-element-rhweb-cta-banner.video-inactive {
+	@media(max-width: 767px) {
+		height: auto !important;
+	}
+}

@@ -1,0 +1,45 @@
+{% sw_extends '@Storefront/storefront/layout/header.html.twig' %}
+
+{% block base_header_inner %}
+    {% block layout_header_top_bar_usp_bar_section %}
+        <div class="usp-bar-sections">
+            <div class="container">
+                <div class="usp-bar-items">
+                    <div class="usp-bar-first-item">
+                <span class="usp-bar-first-icon">
+                    {% sw_icon 'businessman' style {'pack': 'hans','class':'hans-businessman'} %}
+                </span>
+                        <span class="usp-bar-first-text">
+                    {{ "hansAndKniebes.topBar.businessman"|trans|sw_sanitize }}
+                </span>
+                    </div>
+                    <div class="usp-bar-second-item">
+                <span class="usp-bar-second-icon">
+                    {% sw_icon 'language' style {'pack': 'hans','class':'hans-language'} %}
+                </span>
+                        <span class="usp-bar-second-text">
+                    {{ "hansAndKniebes.topBar.language"|trans|sw_sanitize }}
+                </span>
+                    </div>
+                    <div class="usp-bar-third-item">
+                <span class="usp-bar-third-icon">
+                    {% sw_icon 'star' style {'pack': 'hans','class':'hans-review'} %}
+                </span>
+                        <span class="usp-bar-third-text">
+                    {{ "hansAndKniebes.topBar.review"|trans|sw_sanitize }}
+                </span>
+                    </div>
+                    <div class="usp-bar-fourth-item">
+                <span class="usp-bar-fourth-icon">
+                    {% sw_icon 'shipping' style {'pack': 'hans','class':'hans-shopping'} %}
+                </span>
+                        <span class="usp-bar-fourth-text">
+                    {{ "hansAndKniebes.topBar.shipping"|trans|sw_sanitize }}
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {{ parent() }}
+{% endblock %}

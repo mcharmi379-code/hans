@@ -1,0 +1,27 @@
+{
+  "name": "hans/hans-and-kniebes",
+  "description": "Hans And Kniebes Theme",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "version": "1.3.28",
+  "autoload": {
+    "psr-4": {
+      "HansAndKniebesTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "HansAndKniebesTheme\\HansAndKniebesTheme",
+    "label": {
+      "de-DE": "Hans And Kniebes Theme",
+      "en-GB": "Hans And Kniebes Theme"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://www.icreativetechnologies.com",
+      "en-GB": "https://www.icreativetechnologies.com"
+    },
+    "supportLink": {
+      "de-DE": "https://support.icreativetechnologies.com/",
+      "en-GB": "https://support.icreativetechnologies.com/"
+    }
+  }
+}

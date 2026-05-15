@@ -1,0 +1,178 @@
+.checkout-container {
+	.checkout-main {
+		padding: 25px;
+		padding-top: 12px;
+	}
+
+	.register-card {
+		margin-top: 25px;
+	}
+
+	.register-personal {
+		margin-top: 17px;
+	}
+
+	.contact-type,
+	.country-and-state-form-elements .form-group,
+	.form-group:has(input#personalMail),
+	.form-group:has(input#billingAddressAddressPhoneNumber),
+	.form-group:has(select#personalSalutation) {
+		width: 100%;
+	}
+
+	.register-address,
+	.register-form .privacy-notice .form-group.form-check {
+		margin-bottom: 0;
+	}
+
+	.revocation-notice {
+		margin-bottom: 0;
+	}
+
+	.checkout-card {
+		.card-title {
+			font-family: $sw-font-family-headline;
+		}
+	}
+}
+
+
+
+.is-ctl-accountorder,
+.is-act-confirmpage {
+	.checkout-container {
+		@include media-breakpoint-down(lg) {
+			padding: 0 15px;
+		}
+
+		.checkout-main,
+		.checkout-aside {
+			@include media-breakpoint-up(lg) {
+				margin-left: 0;
+			}
+		}
+
+		.checkout-aside {
+			@include media-breakpoint-down(lg) {
+				margin-top: 20px;
+				padding: 0;
+			}
+		}
+	}
+}
+
+// new bug solb scss
+
+@media only screen and (max-width: 1024px) {
+	.is-act-checkoutregisterpage .checkout {
+		padding-top: 0px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.header-minimal {
+		.header-minimal-row {
+			position: relative;
+
+			.header-minimal-back-to-shop {
+				position: absolute;
+			}
+		}
+	}
+}
+
+.cart-main-header {
+	font-size: 24px;
+}
+.cart-main-header-item-counter {
+    font-size: 16px;
+}
+body {
+	.checkout-aside-summary {
+		background-color: transparent;
+	}
+	.checkout-aside-summary-list {
+	    margin-bottom: 0;
+	}
+	.scg-big {
+		padding-bottom: 25px;
+	}
+	.scg-main {
+		.scg-wrapper {
+			.scg-cart-title {
+				padding-bottom: 4px;	
+			}
+		}
+	}
+}
+
+.checkout-product-slider {
+	.cms-element-cart-product-slider {
+		.product-slider-controls-container {
+			.product-slider-controls-prev,
+			.product-slider-controls-next {
+				width: 35px;
+				height: 35px;
+				line-height: 35px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+				.icon {
+					width: 20px;
+    				height: 20px;
+    				svg {
+    					top: 0;
+    				}
+				}
+			}
+		}
+
+		.product-box {
+			.card-body {
+				.product-image-wrapper {
+					padding-top: 80%;
+				}
+
+				.product-info {
+					margin-top: 10px;
+
+					.product-name {
+						font-size: 14px;
+						line-height: 18px;
+						min-height: 55px;
+						padding-bottom: 3px;
+					}
+				}
+
+				.product-price-info {
+					.product-price {
+						font-size: 14px;
+						line-height: 20px;
+					}
+				}
+
+				.product-action {
+					.btn {
+						font-size: 11px;
+						height: 28px;
+						min-width: unset;
+						max-width: unset;
+						width: 100%;
+						line-height: 26px;
+					}
+				}
+			}
+		}
+	}
+}
+body {
+	.scg-main {
+		.scg-wrapper {
+			.progressbar {
+				li:after {
+					left: calc(-50% + 13px);
+				}
+			}
+		}
+	}
+}

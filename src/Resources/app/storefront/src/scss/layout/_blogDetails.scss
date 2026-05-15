@@ -1,0 +1,139 @@
+.netzp-blog6-post {
+    .card {
+        .card-body {
+
+            img {
+                max-height: 100% !important;
+            }
+
+            h2 {
+                font-size: 20px;
+                font-style: normal;
+                line-height: 28px;
+                color: $sw-color-brand-secondary;
+            }
+
+            .card-post-meta {
+                .card-text {
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+
+                    .text-muted {
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            .card-post-author {
+                .author-details {
+                    .name {
+                        margin-bottom: 0;
+
+                        a {
+                            text-decoration: none !important;
+                        }
+                    }
+                }
+            }
+
+            
+              
+
+            .card-text {
+                h3 {
+                    span {
+                        font-size: 20px !important;
+                        font-style: normal !important;
+                        line-height: 28px !important;
+                        color: $sw-color-brand-secondary !important;
+                        font-family: $sw-font-family-headline !important;
+                        margin: 20px 0 !important;
+                    }
+                }
+
+                h2 {
+                    span {
+                        font-size: 20px !important;
+                        font-style: normal !important;
+                        line-height: 28px !important;
+                        color: $sw-color-brand-secondary !important;
+                        font-family: $sw-font-family-headline !important;
+                        margin: 20px 0 !important;
+                    }
+                }
+
+                p {
+                    font-size: 18px !important;
+                    font-style: normal !important;
+                    line-height: 22px !important;
+                    color: $sw-color-brand-secondary !important;
+                    font-weight: 400 !important;
+                    padding-bottom: 0 !important;
+
+                    a {
+                        text-decoration: none !important;
+
+                        span {
+                            color: #B93A58 !important;
+                            font-size: 18px !important;
+                            line-height: 28px !important;
+                            text-decoration: none !important;
+                        }
+                    }
+                }
+
+                ul {
+                    li {
+                        list-style: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// media query start
+@include media-breakpoint-down(md) {
+    .netzp-blog6-post {
+        .card {
+            .card-body {
+                h2 {
+                    font-size: 24px;
+                    line-height: 33px;
+                }
+
+                .card-post-meta {
+                    .card-text {
+                        gap: 15px;
+                    }
+                }
+
+                h3 {
+                    span {
+                        font-size: 24px !important;
+                        line-height: 30px !important;
+                    }
+                }
+
+                p {
+                    font-size: 16px !important;
+                    line-height: 24px !important;
+
+                    a {
+                        text-decoration: none !important;
+
+                        span {
+                            font-size: 16px !important;
+                            line-height: 24px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// media query end
