@@ -1,0 +1,58 @@
+{
+  "hansAndKniebes": {
+    "topBar": {
+      "shipping": "Kostenloser Versand bei Bestellungen über €50 (Nur in Deutschland)",
+      "review": "5-Sterne-Kundenbewertung",
+      "language": "Deutsche Handwerkskunst",
+      "businessman": "Seit 1926 - 100 Jahre Spitzenleistungen in der Körperpflege"
+    },
+      "b2b": {
+        "registrationFormTitle": "B2B-Anmeldeformular",
+        "registerHint": "Nutzen Sie das B2B-Registrierungsformular, um ein neues Konto zu erstellen.",
+        "openRegistration": "Anmeldeformular öffnen"
+      }
+  },
+  "header": {
+    "accountTitle": "Mein Konto",
+    "businessAccess": "Zugang für Unternehmen"
+  },
+  "footer": {
+    "serviceHotline": "<p>Unterstützung und Beratung unter:<p><p>E-Mail: <a href='mailto:shop@hanskniebes.de'>shop@hanskniebes.de</a></p>",
+    "officeHoursTitle": "Öffnungszeiten:",
+    "officeHours": "Montag - Donnerstag 9:00 - 12:30 <br>Uhr und 13:00 - 16:30 Uhr <br>Freitag 9:00 - 12:30 Uhr",
+    "includeVatTextPage": "Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl.  <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\">Versandkosten und ggf</a> Nachnahmegebühren, wenn nicht anders angegeben.",
+    "excludeVatTextPage": "Alle Preise excl. gesetzl. Mehrwertsteuer zzgl. <a data-ajax-modal=\"true\" href=\"%url%\" data-url=\"%url%\">Versandkosten und ggf</a> Nachnahmegebühren, wenn nicht anders angegeben."
+  },
+  "addressNotification": {
+    "message": "Diese Adressänderung gilt nur für Bestellungen in unserem Online-Shop. Für Adressänderungen bei laufenden Abonnements senden Sie uns bitte eine E-Mail."
+  },
+  "detail": {
+    "reviewNotEligibleTooltip": "Sie können nur Produkte bewerten, die Sie gekauft haben",
+    "reviewLoginRequired": "Anmelden um zu bewerten",
+    "reviewPurchaseRequired": "Nur für Käufer verfügbar"
+  },
+  "review": {
+    "readMore": "... Weiterlesen"
+  },
+  "account": {
+    "newsletterRegisterLabel": "Ja, ich möchte den Newsletter abonnieren",
+    "orderHolidayShippingMessage": "Bestellungen, die zwischen dem 23.12.2025 und dem 04.01.2026 aufgegeben werden, werden aufgrund der Feiertage ab dem 05.01.2026 versandt."
+  },
+  "newsletter": {
+    "subscribeMessage": "Exklusive Gratisgeschenke bei ihrer Bestellung - nur für Newsletter-Abonnenten"
+  },
+  "b2b": {
+    "requestAccess": {
+      "title": "Kontozugang anfragen",
+      "button": "Neues Zugriffsformular anfordern",
+      "company": "Firmenname",
+      "contact": "Ansprechpartner",
+      "email": "E-Mail",
+      "vat": "USt-IdNr.",
+      "reference": "Kundennummer (optional)",
+      "submit": "Anfrage senden",
+      "successMessage": "Ihre Anfrage wurde gesendet. Wir werden uns in Kürze bei Ihnen melden.",
+      "errorMessage": "Bitte füllen Sie alle Pflichtfelder aus."
+    }
+  }
+}

@@ -1,0 +1,132 @@
+.search-suggest-total {
+    .align-items-center {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+    }
+
+    .search-suggest-total-link {
+        display: flex;
+    }
+
+    .col-xs-12 {
+        width: auto !important;
+    }
+
+}
+
+.card-media {
+    --rhweb-subcategories-height-image: 283px !IMPORTANT;
+    min-height: 281px !important;
+
+    .img-fluid {
+        object-fit: cover !important;
+    }
+}
+
+
+.cms-block .cms-block-container {
+    padding-bottom: 0px !important;
+}
+
+.product-detail-description-text {
+    margin-bottom: 0px;
+}
+
+.product-detail-cross-selling .card {
+    margin-top: 0rem;
+
+    .product-detail-tabs-content {
+        padding-top: 0px !important;
+    }
+}
+
+
+.header-cart {
+    .header-cart-btn {
+        padding: 0px 3px 0px 9px !important;
+
+    }
+
+    .header-cart-badge {
+        position: absolute;
+        right: -1.5px;
+        top: 0px;
+        border: 0;
+        box-sizing: content-box;
+        height: 7px;
+        line-height: 6px;
+        margin: 0px 2px;
+        min-width: 0px;
+        padding: 3px;
+        font-size: 10px;
+
+    }
+}
+
+
+.scg-free-badge div {
+
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
+
+.filter-panel {
+    margin-bottom: 0px;
+
+
+    .filter-panel-item {
+        margin-right: 12px;
+        margin-top: 12px;
+        margin-bottom: 0px;
+    }
+}
+
+.checkout {
+    padding-top: 0px !important;
+}
+
+.dropdown-toggle::after {
+    margin-left: 0px !important;
+}
+
+
+@media (min-width: 1200px) {
+    .container-main {
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+        gap: 2px;
+    }
+
+}
+
+// Review rating content truncation
+.rhweb-product-ratings-content {
+    .rating-content {
+        position: relative;
+
+        .rating-content-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .rating-read-more {
+            font-size: 13px;
+            color: $sw-color-brand-secondary;
+            text-decoration: none;
+            display: inline-block;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

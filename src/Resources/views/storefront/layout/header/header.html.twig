@@ -1,0 +1,53 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{% block layout_header_logo %}
+    {{ parent() }}
+{% endblock %}
+
+{% block layout_header_search %}
+<div class="col-12 col-lg-auto header-service-menu pb-sm-2 my-3 m-lg-0 d-flex">
+    {% for cat in header.extensions.headerCategories.elements %}
+        {% set name = cat.translated.name %}
+        {% block layout_footer_navigation_information_link %}
+            <li>
+                <a class="footer-link"
+                   href="{{ category_url(cat) }}"
+                   {% if category_linknewtab(cat) %}target="_blank"{% endif %}
+                   title="{{ name }}">
+                    {{ name }}
+                </a>
+            </li>
+        {% endblock %}
+    {% endfor %}
+</div>
+    {{ parent() }}
+{% endblock %}
+
+{% block layout_header_actions_cart %}
+    {{ parent() }}
+    {# Business Access button — links directly to the standalone B2B registration page #}
+    {% set b2bGroupId = config('HansAndKniebesTheme.config.customerGroupRegistrationId') %}
+    <div class="col-auto d-flex align-items-center">
+        <a href="{{ b2bGroupId ? path('frontend.account.login.page', {b2b: 1}) : path('frontend.account.login.page') }}"
+           class="btn btn-primary btn-business-access">
+            {{ 'header.businessAccess'|trans|sw_sanitize|default('Business Access') }}
+        </a>
+    </div>
+
+    {% block layout_header_top_bar_inner %}
+        <div class="col-auto">
+            {% if header.languages.count > 1 or header.currencies.count > 1 %}
+                <nav class="top-bar-nav d-flex justify-content-end gap-3"
+                     aria-label="{{ 'header.topBarAriaLabel'|trans|striptags }}">
+                    {% block layout_header_top_bar_language %}
+                        {% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' %}
+                    {% endblock %}
+
+                    {% block layout_header_top_bar_currency %}
+                        {% sw_include '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' %}
+                    {% endblock %}
+                </nav>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endblock %}

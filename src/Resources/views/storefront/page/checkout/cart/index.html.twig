@@ -1,0 +1,45 @@
+{% sw_extends '@ProxaBasketCrossSellingSW6/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block page_checkout_aside_crossselings %}
+    {% if page.cart.extensions.sliderProducts.all and config('ProxaBasketCrossSellingSW6.config.proxaCrossSellingCartActive') %}
+        {% set config = {
+            'title': {
+                'value':  'proxa-basket-cross-selling.cart-slider-title'|trans
+            },
+            'border': {
+                'value': false
+            },
+            'rotate': {
+                'value': false
+            },
+            'boxLayout': {
+                'value': 'cart'
+            },
+            'elMinWidth': {
+                'value': '250px'
+            },
+            'navigation': {
+                'value': true
+            },
+            'displayMode': {
+                'value': 'standard'
+            },
+            'position' :{
+                'value': page.cart.extensions.sliderType.get(0)
+            },
+            'addToCartBtnShow': {
+                'value': 'cart'
+            },
+        } %}
+        {% block page_checkout_aside_crossselings_content %}
+            <div class="checkout-product-slider">
+                <div class="col-12">
+                    {% sw_include '@Storefront/storefront/element/cms-element-cart-product-slider.html.twig' with {
+                        elements: page.cart.extensions.sliderProducts.all,
+                        sliderConfig: config,
+                    } %}
+                </div>
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,62 @@
+{
+  "name": "HansAndKniebesTheme",
+  "author": "iCreative Technologies",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@HansAndKniebesTheme"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/hans-and-kniebes-theme/hans-and-kniebes-theme.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "iconSets": {
+    "hans": "app/storefront/src/assets/icon-pack/hans"
+  },
+  "config": {
+    "fields": {
+      "sw-font-playfairMedium": {
+        "label": {
+          "en-GB": "Playfair font",
+          "de-DE": "Playfair-Schriftart"
+        },
+        "type": "text",
+        "value": "PlayfairDisplay-Medium",
+        "editable": true,
+        "block": "typography",
+        "order": 700
+      },
+      "sw-font-latosemiBold": {
+        "label": {
+          "en-GB": "Lato font",
+          "de-DE": "Lato-Schriftart"
+        },
+        "type": "text",
+        "value": "Lato-SemiBold",
+        "editable": true,
+        "block": "typography",
+        "order": 800
+      },
+      "sw-font-latoBold": {
+        "label": {
+          "en-GB": "Lato font",
+          "de-DE": "Lato-Schriftart"
+        },
+        "type": "text",
+        "value": "Lato-Bold",
+        "editable": true,
+        "block": "typography",
+        "order": 900
+      }
+    }
+  }
+}

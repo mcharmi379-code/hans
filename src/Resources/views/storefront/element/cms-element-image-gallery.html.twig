@@ -1,0 +1,8 @@
+{% extends "@Storefront/storefront/element/cms-element-image-gallery.html.twig" %}
+
+{% block element_image_gallery_inner %}
+    {% set mediaItems = mediaItems|sort((a, b) =>
+        (a.getMediaType().getName() == 'VIDEO' ? 0 : 1) <=> (b.getMediaType().getName() == 'VIDEO' ? 0 : 1)
+        ) %}
+    {{ parent() }}
+{% endblock %}

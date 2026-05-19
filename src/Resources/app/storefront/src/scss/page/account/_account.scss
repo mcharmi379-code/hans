@@ -1,0 +1,200 @@
+.navbar .dropdown-menu {
+    background: #f7f7f7;
+}
+.navigation-flyout-categories {
+    margin-top: 15px;
+}
+.account-aside-btn {
+	text-decoration: none !important;
+}
+body .breadcrumb svg {
+	top: 0;
+}
+.modal-content .cms-section-sidebar .cms-section-sidebar-main-content {
+    width: 100%;
+}
+.modal-content .cms-section-sidebar .cms-section-sidebar-sidebar-content {
+    display: none;
+}
+
+.cms-page.wishlist-page .row.cms-listing-row.js-listing-wrapper .cms-listing-col.wishlist-listing-col.col-12 {
+    width: 100%;
+}
+body .nav-main .main-navigation-link.home-link:hover .icon {
+    color: $sw-color-brand-primary !important;
+}
+.account.account-content {
+	border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    margin-top: 0px !important;
+	.account-content-aside {
+		width: 25%;
+		border: 0 !important;
+		.account-aside {
+			border: 1px solid #eaeaf0;
+	    	background: #f7f7f7;
+	    	padding: 0px;
+	    	.card-header {
+			    background: $sw-color-brand-primary;
+			    color: #fff;
+			    padding: 10px 20px;
+			    font-size: 16px;
+	    	}
+	    	.card-footer {
+	    		padding: 0 20px 20px;
+	    	}
+	    	.account-aside-item {
+	    		font-size: 16px;
+	    		background: #f7f7f7;
+	    	}
+	    	.account-aside-list-group {
+	    		margin-bottom: 0;
+	    		padding: 0 22px;
+	    	}
+		}
+	}
+	.account-content-main {
+		width: 75%;
+		margin: 0 !important;
+		@include media-breakpoint-down(lg) {
+			width: 100%;
+		}
+		.account-overview, .account-profile, .account-address, .account-payment, .account-orders {
+			.account-welcome, > .row, .account-overview-newsletter, .account-profile-personal, .account-profile-credentials, .profile-content, .address-list, > .card, .account-orders-main, .account-overview-card.account-overview-newest-order	 {
+				border: 1px solid #eaeaf0;
+		    	background: #f7f7f7;
+		    	padding: 20px;
+		    	margin-bottom: 25px;
+		    	margin-left: 0;
+    			margin-right: 0;
+    			h1, .card-title {
+    				text-transform: uppercase;
+    				font-family: $sw-font-family-headline;
+    			}
+    			.card-title {
+    				font-size: 16px;
+    			}
+		    }
+		    .account-welcome p {
+		    	margin-bottom: 0;
+		    }
+		}
+		.account-address {
+			.address-list {
+				.row {
+					margin: 0;
+				}
+			}
+		}
+
+		.account-overview-card, .address-card {
+			padding: 0;
+			margin-bottom: 0;
+			@include media-breakpoint-down(lg) {
+				margin-bottom: 20px;
+			}
+		}
+		.account-overview-payment {
+			strong {
+				font-size: 16px;
+			}
+		}
+		.form-label {
+    		color: $sw-color-brand-secondary;
+    		font-size: 14px;
+    		margin-bottom: 5px;
+    	}
+    	.form-control, .form-select {
+			border: 1px solid #eaeaf0;
+		}
+		.account-profile-change, .account-profile-mail-label {
+			font-size: 16px;
+		}
+		.contact-type .form-check {
+		    margin-right: 15px;
+		}
+		.payment-methods .payment-method {
+		    border-bottom: 1px solid #ccc;
+		    padding: 10px 0;
+		    &:last-child {
+		    	border-bottom: 0;
+		    }
+		    .form-group, .form-check {
+		    	margin-bottom: 0;
+		    }
+		}
+	}
+}
+
+
+@include media-breakpoint-down(lg) {
+	body .form-control,
+	body .required-fields {
+		font-size: 14px;
+	}
+	.account-profile .profile-content.accordion .col.form-group {
+	    width: 100%;
+	    flex: revert;
+	}
+	.account-orders-main, .account-overview-newest-order {
+		.order-table-header-context-menu .icon {
+			margin: 0;
+	    	height: 33px;
+		}
+		.gbmed-config-states.gbmed-config-states-neutral {
+			border-radius: 0;
+			font-size: 12px;
+		}
+		.order-table-header-order-table-body .order-table-header-order-table-body-cell {
+		    display: flex;
+		    align-items: center;
+		}
+		.order-table-header, .order-item-header {
+		    padding-left: 13px;
+		    padding-right: 13px;
+		}
+	}
+}
+
+.order-table-header-order-table-header-cell,
+.order-detail-content-header-cell,
+th,
+dt,
+.confirm-product .cart-header-row > div,
+.line-item-total-price-value {
+	font-family: $sw-font-latoBold;
+}
+
+@include media-breakpoint-down(md) {
+	.order-detail-content-body {
+		.line-item-quantity,
+		.line-item-total-price-value,
+		.line-item-unit-price,
+		.line-item-total-price {
+			text-align: center;
+		}
+	}
+}
+
+@media(max-width: 575px) {
+	.order-detail-content-body {
+		.line-item-quantity,
+		.line-item-total-price-value,
+		.line-item-unit-price,
+		.line-item-total-price {
+			width: auto;
+			margin-bottom: 0;
+		}
+		.line-item-quantity-label {
+			margin-bottom: 0;
+		}
+		.line-item-info {
+			width: 100%;
+			margin-bottom: 0;
+		}
+		.line-item-row {
+			justify-content: space-between;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{% sw_extends '@RHWebCmsElements/storefront/rhweb-custom/element/rhweb-product-ratings/box-ratings.html.twig' %}
+
+{% block rhweb_component_product_box_rating_content %}
+    <div class="rating-content">
+        <p class="rating-content-text">{{ firstRatingWithContentAndTitle.content }}</p>
+        <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
+           class="rating-read-more">
+            {{ 'review.readMore'|trans|sw_sanitize|default('... Read more') }}
+        </a>
+    </div>
+{% endblock %}

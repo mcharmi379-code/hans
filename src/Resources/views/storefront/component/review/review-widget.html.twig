@@ -1,0 +1,37 @@
+{% sw_extends '@Storefront/storefront/component/review/review-widget.html.twig' %}
+
+{% block component_review_form_teaser_button %}
+    {% set canWriteReview = true %}
+    
+    {# Only disable for logged-in users who haven't purchased AND don't have existing review #}
+    {% if context.customer and not context.customer.guest and not reviews.customerReview %}
+        {% set canWriteReview = page.extensions.canWriteReview.value ?? true %}
+    {% endif %}
+
+    {% if canWriteReview %}
+        <button class="btn btn-primary product-detail-review-teaser-btn"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target=".multi-collapse"
+                aria-expanded="false"
+                aria-controls="review-form review-list">
+            <span class="product-detail-review-teaser-show">
+                {% if not reviews.customerReview %}
+                    {{ 'detail.reviewTeaserButton'|trans|sw_sanitize }}
+                {% else %}
+                    {{ 'detail.reviewExistsTeaserButton'|trans|sw_sanitize }}
+                {% endif %}
+            </span>
+            <span class="product-detail-review-teaser-hide">
+                {{ 'detail.reviewTeaserButtonHide'|trans|sw_sanitize }}
+            </span>
+        </button>
+    {% else %}
+        <button class="btn btn-secondary product-detail-review-teaser-btn"
+                type="button"
+                disabled
+                title="{{ 'detail.reviewNotEligibleTooltip'|trans|sw_sanitize }}">
+            {{ 'detail.reviewPurchaseRequired'|trans|sw_sanitize }}
+        </button>
+    {% endif %}
+{% endblock %}

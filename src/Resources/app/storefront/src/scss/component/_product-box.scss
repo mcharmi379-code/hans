@@ -1,0 +1,217 @@
+.product-box {
+	border: 0 !important;
+
+	.card-body {
+		.product-image-wrapper {
+			background: #F5F5F7;
+			position: relative;
+			padding-top: 125%;
+			overflow: hidden;
+			margin-bottom: 0;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				object-fit: contain !important;
+				max-height: revert !important;
+				padding: 18px;
+				mix-blend-mode: darken;
+			}
+		}
+
+		.product-info {
+			text-align: center;
+			margin-top: 20px;
+
+			.product-name {
+				font-size: 22px;
+				font-family: $sw-font-playfairMedium;
+				line-height: 28px;
+				padding-bottom: 5px;
+				min-height: 58px;
+			}
+
+			.product-description {
+				color: #7C7C7C;
+				font-size: 12px;
+				line-height: 16px;
+				height: auto;
+				min-height: 50px;
+			}
+		}
+
+		.product-price-info {
+			.product-price {
+				font-size: 20px;
+				font-family: 'Lato-Medium';
+				line-height: 28px;
+			}
+		}
+
+		.product-action {
+			.btn {
+				border-radius: 46px;
+				font-size: 16px;
+				text-transform: uppercase;
+				font-family: $sw-font-latosemiBold;
+				height: 36px;
+				min-width: 200px;
+				max-width: 200px;
+				margin: 0 auto;
+				line-height: 34px;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+body {
+	.cms-element-product-listing .cms-listing-col {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+// Bug solb css
+// To verify detail page bug.
+@media only screen and (min-width: 993px) and (max-width: 1160px) {
+	.product-detail-form-container {
+		.input-group {
+			.input-group-text {
+				margin: 20px 0 10px;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 540px) and (max-width: 992px) {
+	.product-detail-form-container {
+		.buy-widget-container {
+			margin-bottom: 12px;
+
+			.input-group {
+				.input-group-text {
+					margin: 0px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 539px) {
+	.product-detail-form-container {
+		.input-group {
+			.input-group-text {
+				margin: 20px;
+			}
+		}
+	}
+}
+
+// contact us page bug.
+.cms-element-text {
+	ul {
+		margin-bottom: 12px !important;
+
+		p {
+			margin-bottom: 10px !important;
+		}
+	}
+
+	p {
+		margin-bottom: 10px !important;
+	}
+}
+
+//Right Of Withdrawal bug.
+
+.right-of-withdrawal {
+	.col-12 {
+		padding: 0 !important;
+	}
+}
+
+// dealer-inquiry
+
+.dealer-inquiry {
+	.col-12 {
+		padding: 0 !important;
+	}
+}
+
+// shipping-and-payment-terms
+.shipping-and-payment-terms {
+	.col-12 {
+		padding: 0 !important;
+	}
+}
+
+// defective-product 
+.defective-product {
+	.col-12 {
+		padding: 0 !important;
+	}
+}
+
+// blog page
+
+.netzp-blog6-post .card .card-body img {
+	max-width: 100%;
+	width: auto;
+}
+
+@media only screen and (max-width: 767px) {
+	.netzp-blog6-post .card .card-body img {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 991.98px) {
+
+	.btn.filter-panel-wrapper-toggle,
+	.filter-panel-wrapper-toggle.rhweb-nav-link-button {
+		display: block;
+		border: 0.5px solid #7C7C7C;
+	}
+}
+
+// brand page
+
+.brand-page .cms-element-text h2,
+.brand-page .cms-element-text .h2 {
+	font-size: 30.8px;
+	line-height: 44px;
+}
+
+.brand-page {
+	.card {
+		.card-body {
+			a {
+				font-size: 18px;
+				line-height: 40px;
+				height: 48px;
+			}
+		}
+	}
+}
+
+// new bug solb css
+
+.cms-block-product-listing {
+	.cms-element-product-listing {
+		.card {
+			.product-badges {
+				left: 30px !important;
+			}
+		}
+	}
+}
+
+.card {
+	.product-badges {
+		left: 30px !important;
+	}
+}

@@ -1,0 +1,72 @@
+{% sw_extends '@RHWebCmsElements/storefront/rhweb-custom/element/rhweb-subcategories/rhweb-subcategories-slider.html.twig' %}
+
+{% block rhweb_custom_element_rhweb_subcategories_slider %}
+    {% set subcategorySliderOptions = {
+        slider: {
+            gutter: 20,
+            edgePadding:20,
+            autoplayButtonOutput: false,
+            mouseDrag: false,
+            nav: false,
+            controls: true,
+            autoplay: false,
+            responsive: {
+                xs: {
+                    items: config.itemsXs.value
+                },
+                sm: {
+                    items: config.itemsSm.value
+                },
+                md: {
+                    items: config.itemsMd.value
+                },
+                lg: {
+                    items: config.itemsLg.value
+                },
+                xl: {
+                    items: config.itemsXl.value
+                },
+                xxl: {
+                    items: config.itemsXxl.value
+                }
+            }
+        }
+    } %}
+
+    {% block element_rhweb_subcategory_slider_container %}
+        <div class="base-slider" data-base-slider="true" data-base-slider-options='{{ subcategorySliderOptions|json_encode }}'>
+            {% block element_rhweb_subcategory_slider_content %}
+                <div class="" data-base-slider-container="true">
+                    {% for category in categoryTree %}
+                        <div>
+                            {% sw_include '@Storefront/storefront/rhweb-custom/element/rhweb-subcategories/rhweb-subcategories-card.html.twig' with{
+                                curCat: category,
+                                cardClasses: cardClasses,
+                                config: config
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endblock %}
+
+            {% block element_rhweb_subcategory_slider_controls %}
+                <div class="base-slider-controls" data-base-slider-controls="true">
+                    {% block element_rhweb_subcategory_slider_button_left %}
+                        <button class="base-slider-controls-prev product-slider-controls-prev" aria-label="{{ 'general.previous'|trans|striptags }}">
+                            {% block element_rhweb_subcategory_slider_button_left_icon %}
+                                {% sw_icon 'arrow-head-left' %}
+                            {% endblock %}
+                        </button>
+                    {% endblock %}
+                    {% block element_rhweb_subcategory_slider_button_right %}
+                        <button class="base-slider-controls-next product-slider-controls-next" aria-label="{{ 'general.next'|trans|striptags }}">
+                            {% block element_rhweb_subcategory_slider_button_right_icon %}
+                                {% sw_icon 'arrow-head-right' %}
+                            {% endblock %}
+                        </button>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

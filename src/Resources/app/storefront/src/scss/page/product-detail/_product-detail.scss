@@ -1,0 +1,111 @@
+.cms-block-product-heading {
+	.cms-block-container-row {
+		display: block !important;
+	}
+	.cms-element-product-name {
+	    display: block;
+		width: 100%;
+		h1 {
+			//background: #f7f7f7;
+    		padding: 20px;
+		}
+	}
+}
+
+
+.product-detail-buy {
+	.product-detail-price {
+		font-family: $sw-font-latoBold;
+		color: $sw-color-brand-primary;
+	}
+	.buy-widget-container {
+		.btn {
+			font-size: 16px;
+			text-transform: uppercase;
+			font-family: $sw-font-latosemiBold;
+		}
+	}
+}
+
+form#productDetailPageBuyProductForm > .row:nth-child(2) .col-8 {
+    width: 100%;
+}
+
+
+
+.acris-faq-group-container {
+    margin-top: 25px;
+}
+.cms-block-gallery-buybox {
+	> .cms-block-container  {
+		padding-top: 0 !important;
+	}
+}
+.cms-element-buy-box {
+	.product-detail-name {
+		font-size: 25px;
+    	line-height: normal;
+	}
+	.product-detail-reviews,
+	.product-add-review-link {
+		margin-bottom: 0;
+	}
+	.custom-product-reviews-section {
+		span {
+			margin-bottom: 0;
+		}
+	}
+}
+body .product-detail-buy .product-detail-price {
+	font-size: 24px;
+}
+.product-detail-price-container + .row {
+    margin-bottom: 0;
+}
+body {
+	.product-detail-tax {
+		margin-bottom: 1rem;
+	}
+}
+
+// Lenz Variant Manager – compact responsive tiles
+.lenz-variant-manager {
+		.image-variants {
+		.variant-option {
+			padding: 5px;
+			width: calc(20% - 0.5rem);
+
+			@media (max-width: 767px) {
+				width: calc(25% - 0.5rem);
+			}
+
+			@media (max-width: 575px) {
+				width: calc(33.333% - 0.5rem);
+			}
+
+			display: flex;
+			flex-direction: column;
+
+			.variant-image {
+				height: auto;
+				max-width: 100%;
+				overflow: visible;
+				flex: 1;
+
+				img {
+					width: 100%;
+					height: auto;
+					display: block;
+				}
+			}
+
+			.variant-price {
+				margin-top: auto;
+				padding-top: 4px;
+				height: auto;
+				font-size: 0.75rem;
+				line-height: 1.2;
+			}
+		}
+	}
+}

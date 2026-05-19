@@ -1,0 +1,116 @@
+.is-ctl-blog .netzp-blog6-post .card img.weedesign-webp--gallery-fix.card-img-top {
+    height: 400px;
+    margin: 25px 0;
+    @media(max-width: 992px) {
+    	height: auto;
+    }
+}
+.card-post-header:has(.card-post-author) .card-post-meta {
+	@media(min-width: 768px){
+	    width: 50% !important;
+	}
+}
+.card-post-header .card-post-meta {
+    @media(min-width: 768px){
+	    width: 100% !important;
+	}
+}
+.custom-page--content {
+	.content--custom {
+		strong, b {
+			font-family: $sw-font-family-headline;
+		}
+		p {
+			margin-bottom: 0;
+		}
+		h3 {
+		    margin-bottom: 0;
+		    margin-top: 30px;
+		}
+	}
+}
+
+.contact-page-content, .cms-page-content {
+	p {
+		margin-bottom: 0;
+	}
+	.card-title {
+		font-family: $sw-font-family-headline;
+		font-size: 24px;
+	}
+	.form-text {
+		margin-top: 0;
+	}
+	ul {
+		padding-left: 0;
+		list-style: none;
+		margin-bottom: 0;
+	}
+}
+
+.cms-page-content {
+	.cms-element-text {
+		> div {
+			margin-top: 35px;
+		}
+		h4 {
+			margin-bottom: 4px;
+			margin-top: 20px;
+		}
+	}
+}
+.cms-pages {
+	.cms-section-sidebar {
+		margin-top: 30px;
+	}
+	.cms-section-sidebar-sidebar-content {
+		.cms-block-category-navigation {
+			background: #f7f7f7;
+			border: 1px solid $sw-border-color;
+		}
+		.cms-block-container {
+			padding:0 !important;
+			.category-navigation {
+				> li {
+					&:last-child {
+						border-bottom:0;
+					}
+				}
+			}
+		}
+	}
+	.cms-section-sidebar-main-content {
+		@include media-breakpoint-down(lg) {
+			margin-top: 30px;
+		}
+		.cms-block-container  {
+			padding-top: 0 !important;
+			.col-12 {
+				@include media-breakpoint-down(lg) {
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+
+@include media-breakpoint-up(md) {
+	.is-act-index {
+		.cms-block-image-text .cms-block-container-row > div:first-child .cms-element-image:has(.cms-image-container) 	{
+			display: block;
+		}
+		.cms-block-image-text .cms-block-container-row > div:first-child:has(.cms-element-image) {
+			display: none;
+		}
+		.cms-block-image-text .cms-block-container-row > div:first-child:has(.cms-element-image .cms-image-container) + div.col-md-6 {
+			width: 50%;
+		}
+		.cms-block-image-text .cms-block-container-row > div:first-child:has(.cms-element-image) + div.col-md-6 {
+			width: 100%;
+		}	
+		.cms-block-image-text .cms-block-container-row>div:first-child:has(.cms-image-container) {
+			display: block !important;
+		}
+	}
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>configuration</title>
+        <component name="sw-entity-single-select">
+            <name>Category</name>
+            <entity>category</entity>
+            <label>Choose a category for the Top-bar Categories configuration</label>
+            <label lang="de-DE">Wählen Sie eine Kategorie für die Konfiguration der Top-Leiste Kategorien</label>
+            <helpText>Choose a Header main Category for top-bar navigation</helpText>
+            <helpText lang="de-DE">Wählen Sie eine Kopfzeilen-Hauptkategorie für die Navigation in der oberen Leiste</helpText>
+        </component>
+        <component name="sw-entity-multi-id-select">
+            <name>LastCategories</name>
+            <entity>category</entity>
+            <label>Choose categories to always show at the end</label>
+            <label lang="de-DE">Wählen Sie Kategorien, die immer am Ende angezeigt werden sollen</label>
+            <helpText>These categories will always appear at the end of the category list in the order selected</helpText>
+            <helpText lang="de-DE">Diese Kategorien werden immer am Ende der Kategorienliste in der ausgewählten Reihenfolge angezeigt</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>B2B Registration</title>
+
+        <component name="sw-switch-field">
+            <name>enableB2bRegisterEmbed</name>
+            <label>Replace register form with Customer Group Registration link</label>
+            <label lang="de-DE">Registrierungsformular durch Kundengruppen-Registrierungslink ersetzen</label>
+            <defaultValue>false</defaultValue>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>customerGroupRegistrationId</name>
+            <entity>customer_group</entity>
+            <label>B2B Customer Group Registration Form</label>
+            <label lang="de-DE">B2B Kundengruppen-Registrierungsformular</label>
+            <helpText>Select the customer group whose registration form will be used for B2B sign-ups.</helpText>
+            <helpText lang="de-DE">Wählen Sie die Kundengruppe, deren Registrierungsformular für B2B-Anmeldungen verwendet wird.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>b2bAccessRequestMailTemplateId</name>
+            <entity>mail_template_type</entity>
+            <label>B2B Access Request Email Template (Admin)</label>
+            <label lang="de-DE">E-Mail-Vorlage für B2B-Zugriffsanfragen (Admin)</label>
+            <helpText>Email template type sent to admin when a new B2B access request is submitted.</helpText>
+            <helpText lang="de-DE">E-Mail-Vorlagentyp für den Admin bei neuen B2B-Zugriffsanfragen.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>b2bAccessRequestCustomerMailTemplateId</name>
+            <entity>mail_template_type</entity>
+            <label>B2B Access Request Email Template (Customer Confirmation)</label>
+            <label lang="de-DE">E-Mail-Vorlage für B2B-Zugriffsanfragen (Kundenbestätigung)</label>
+            <helpText>Email template type sent to the customer confirming their B2B access request was received.</helpText>
+            <helpText lang="de-DE">E-Mail-Vorlagentyp zur Bestätigung der B2B-Zugriffsanfrage an den Kunden.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>b2bPendingRegistrationMailTemplateId</name>
+            <entity>mail_template_type</entity>
+            <label>B2B Pending Registration Email Template</label>
+            <label lang="de-DE">E-Mail-Vorlage für ausstehende B2B-Registrierung</label>
+            <helpText>Sent to customers who register without a VAT ID and are waiting for admin approval.</helpText>
+            <helpText lang="de-DE">Wird an Kunden gesendet, die sich ohne USt-IdNr. registrieren und auf die Admin-Genehmigung warten.</helpText>
+        </component>
+    </card>
+</config>

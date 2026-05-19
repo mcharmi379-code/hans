@@ -1,0 +1,266 @@
+.about-banner {
+    .col-12 {
+        padding: 0;
+
+        .video-inactive {
+            position: relative;
+            color: $sw-background-color;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+
+            .overlay {
+                position: relative !important;
+                z-index: 2 !important;
+
+                .container-content {
+                    .rhweb-heading-cta {
+                        font-size: 28px;
+                        font-style: normal;
+                        line-height: 38px;
+                        color: $sw-background-color !important;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.legacy-section {
+    margin-top: 90px;
+
+    .cms-element-text {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            font-size: 36px;
+            font-style: normal;
+            line-height: 46px;
+            color: $sw-color-brand-secondary;
+            margin-bottom: 0 !important;
+        }
+
+        p {
+            font-size: 18px;
+            font-style: normal;
+            line-height: 28px;
+            color: $sw-color-brand-secondary;
+            margin-bottom: 0 !important;
+            text-align: right;
+            width: 493px;
+        }
+    }
+}
+
+.about-product {
+    margin-top: 75px;
+
+    .col {
+        padding: 0;
+
+        .cms-element-text {
+            display: flex;
+            align-items: center;
+
+            p {
+                font-size: 18px;
+                font-style: normal;
+                line-height: 28px;
+                color: $sw-color-brand-secondary;
+                margin-bottom: 0 !important;
+                max-width: 530px;
+            }
+        }
+
+        .cms-element-image {
+            .cms-image-container {
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                    max-height: 293px;
+                    object-fit: fill !important;
+                }
+            }
+        }
+    }
+}
+
+.about-brands {
+    margin-top: 30px;
+
+    .cms-element-text {
+        h2 {
+            font-size: 28px;
+            font-style: normal;
+            line-height: 38px;
+            color: $sw-color-brand-secondary;
+            margin-bottom: 22px !important;
+        }
+
+        p {
+            font-size: 20px;
+            font-style: normal;
+            line-height: 28px;
+            color: $sw-color-brand-secondary;
+            margin-bottom: 20px;
+            font-weight: 400 !important;
+            max-width: 941px;
+
+            strong {
+                font-size: 20px;
+                font-style: normal;
+                line-height: 28px;
+                color: $sw-color-brand-secondary;
+                font-weight: 600 !important;
+            }
+        }
+    }
+
+    .custom-soluction{
+          h2 {
+            font-size: 28px;
+            font-style: normal;
+            line-height: 38px;
+            color: $sw-color-brand-secondary;
+            margin-top: 18px;
+            margin-bottom: 20px !important;
+        }
+           p {
+            font-size: 20px;
+            font-style: normal;
+            line-height: 28px;
+            color: $sw-color-brand-secondary;
+            margin-bottom: 50px;
+            font-weight: 400 !important;
+            max-width: 100%;
+        }
+    }
+}
+
+// medai query start
+
+// legacy-section
+
+@include media-breakpoint-down(lg) {
+    .legacy-section {
+
+        .cms-element-text {
+            p {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    // aboutus banner
+
+    .about-banner {
+        .col-12 {
+            .video-inactive {
+                height: 250px;
+                .overlay {
+                    .container-content {
+                        .rhweb-heading-cta {
+                            font-size: 20px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // legacy section
+
+    .legacy-section {
+        margin-top: 30px;
+
+        .cms-element-text {
+            justify-content: center;
+
+            h2 {
+                text-align: center;
+                font-size: 24px;
+                line-height: 36px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+            }
+        }
+    }
+
+    // about product
+
+    .about-product {
+        margin-top: 30px;
+
+        .col {
+            .cms-element-text {
+                order: 2;
+                justify-content: center;
+
+                p {
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-align: center;
+                }
+            }
+
+            .cms-element-image {
+                .cms-image-container {
+                    img {
+                        object-fit: fill;
+                    }
+                }
+            }
+        }
+    }
+
+    // .about-brands
+
+.about-brands {
+    margin-top: 30px;
+
+    .cms-element-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin: 0;
+
+            strong {
+                font-size: 14px;
+                font-style: normal;
+                line-height: 28px;
+                color: $sw-color-brand-secondary;
+            }
+        }
+    }
+}
+
+}
+
+// medai query end

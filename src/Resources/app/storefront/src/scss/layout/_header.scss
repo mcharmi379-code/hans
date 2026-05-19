@@ -1,0 +1,446 @@
+.product-name,
+.product-detail-name,
+.line-item-label {
+    text-transform: capitalize !important;
+}
+.home-banner {
+    @media(min-width: 992px) {
+        padding-top: 16px;
+    }
+}
+
+.header-main {
+    .usp-bar-sections {
+        background-color: #F5F5F7;
+        padding: 6px 0 13px;
+        .container {
+            max-width: 1166px;
+        }
+        .usp-bar-items {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            > div {
+                span {
+                    &:first-child {
+                        .icon {
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                }
+                &:last-child {
+                    span {
+                        &:first-child {
+                            .icon {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            div {
+                display: flex;
+                align-items: end;
+                gap: 6px;
+                span {
+                    font-size: 12px;
+                    line-height: 6px;
+                    color: #333333;
+                    letter-spacing: 0.2px;
+                }
+            }
+        }
+    }
+
+    .header-row {
+        padding: 21px 0;
+        .header-service-menu {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 0;
+            padding-right: 0;
+            @media(max-width: 1199px) {
+                gap: 16px;
+            }
+            li {
+                list-style: none;
+
+                .footer-link {
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #333333;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    position: relative;
+                    font-family: 'Lato-Medium';
+                    background-repeat: no-repeat;
+                    padding-left: 21px;
+                    @media(max-width: 1080px) {
+                        font-size: 0;
+                        width: 22px;
+                        height: 22px;
+                        display: block;
+                    }
+                }
+                &:nth-child(1) a{
+                    background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.34863 14.4808V12.8134C1.34863 12.4269 1.44838 12.0819 1.64788 11.7786C1.84738 11.4752 2.11382 11.2392 2.4472 11.0706C3.15995 10.7219 3.87663 10.4531 4.59726 10.2641C5.31801 10.0752 6.11007 9.98081 6.97345 9.98081C7.83695 9.98081 8.62901 10.0752 9.34963 10.2641C10.0704 10.4531 10.7871 10.7219 11.4999 11.0706C11.8333 11.2392 12.0997 11.4752 12.2992 11.7786C12.4987 12.0819 12.5984 12.4269 12.5984 12.8134V14.4808H1.34863ZM14.0984 14.4808V12.7211C14.0984 12.2289 13.9779 11.7597 13.7369 11.3136C13.4958 10.8676 13.1538 10.4849 12.7109 10.1655C13.2138 10.2405 13.6913 10.3566 14.1433 10.5137C14.5951 10.6709 15.0264 10.8567 15.437 11.0711C15.8245 11.2779 16.1238 11.5216 16.3348 11.8022C16.5458 12.0827 16.6513 12.389 16.6513 12.7211V14.4808H14.0984ZM6.97345 8.76918C6.25157 8.76918 5.63363 8.51218 5.11963 7.99818C4.60563 7.48406 4.34863 6.86606 4.34863 6.14418C4.34863 5.42231 4.60563 4.80437 5.11963 4.29037C5.63363 3.77624 6.25157 3.51918 6.97345 3.51918C7.69532 3.51918 8.31332 3.77624 8.82745 4.29037C9.34145 4.80437 9.59845 5.42231 9.59845 6.14418C9.59845 6.86606 9.34145 7.48406 8.82745 7.99818C8.31332 8.51218 7.69532 8.76918 6.97345 8.76918ZM13.4493 6.14418C13.4493 6.86606 13.1923 7.48406 12.6783 7.99818C12.1643 8.51218 11.5464 8.76918 10.8245 8.76918C10.7399 8.76918 10.6322 8.75956 10.5014 8.74031C10.3706 8.72106 10.2629 8.69993 10.1784 8.67693C10.4741 8.32131 10.7014 7.92681 10.8603 7.49343C11.0191 7.06006 11.0984 6.61006 11.0984 6.14343C11.0984 5.67668 11.0174 5.22837 10.8554 4.79849C10.6934 4.36874 10.4678 3.97312 10.1784 3.61162C10.286 3.57312 10.3937 3.54812 10.5014 3.53662C10.6091 3.52499 10.7168 3.51918 10.8245 3.51918C11.5464 3.51918 12.1643 3.77624 12.6783 4.29037C13.1923 4.80437 13.4493 5.42231 13.4493 6.14418ZM2.47345 13.3558H11.4734V12.8134C11.4734 12.6567 11.4343 12.5174 11.3559 12.3952C11.2776 12.2731 11.1534 12.1664 10.9831 12.075C10.3659 11.7567 9.73032 11.5156 9.07645 11.3516C8.42257 11.1877 7.72157 11.1058 6.97345 11.1058C6.22545 11.1058 5.52451 11.1877 4.87063 11.3516C4.21676 11.5156 3.5812 11.7567 2.96395 12.075C2.7937 12.1664 2.66938 12.2731 2.59101 12.3952C2.51263 12.5174 2.47345 12.6567 2.47345 12.8134V13.3558ZM6.97345 7.64418C7.38595 7.64418 7.73907 7.49731 8.03282 7.20356C8.32657 6.90981 8.47345 6.55668 8.47345 6.14418C8.47345 5.73168 8.32657 5.37856 8.03282 5.08481C7.73907 4.79106 7.38595 4.64418 6.97345 4.64418C6.56095 4.64418 6.20782 4.79106 5.91407 5.08481C5.62032 5.37856 5.47345 5.73168 5.47345 6.14418C5.47345 6.55668 5.62032 6.90981 5.91407 7.20356C6.20782 7.49731 6.56095 7.64418 6.97345 7.64418Z" fill="%23333333"/></svg>');
+                }
+                &:nth-child(2) a{
+                    background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.60863 16.3989L5.27026 14.1433L2.72888 13.5864L2.97694 10.9702L1.25494 9L2.97694 7.02975L2.72888 4.41356L5.27026 3.85668L6.60863 1.60106L9.00001 2.61637L11.3914 1.60106L12.7298 3.85668L15.2711 4.41356L15.0231 7.02975L16.7451 9L15.0231 10.9702L15.2711 13.5864L12.7298 14.1433L11.3914 16.3989L9.00001 15.3836L6.60863 16.3989ZM7.08751 14.9625L9.00001 14.1519L10.9356 14.9625L12 13.1625L14.0625 12.6894L13.875 10.575L15.2625 9L13.875 7.40193L14.0625 5.2875L12 4.8375L10.9125 3.0375L9.00001 3.84806L7.06444 3.0375L6.00001 4.8375L3.93751 5.2875L4.12501 7.40193L2.73751 9L4.12501 10.575L3.93751 12.7125L6.00001 13.1625L7.08751 14.9625ZM8.21251 11.4028L12.1903 7.425L11.4 6.61162L8.21251 9.79912L6.60001 8.20968L5.80969 9L8.21251 11.4028Z" fill="%23333333"/></svg>');
+                }
+                &:nth-child(3) a{
+                  background-image: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5802 15.375C13.1668 15.375 11.7469 15.0464 10.3204 14.3891C8.894 13.7319 7.58344 12.8048 6.38869 11.6077C5.19406 10.4106 4.26813 9.1 3.61088 7.67588C2.95363 6.25188 2.625 4.83319 2.625 3.41981C2.625 3.19269 2.7 3.00344 2.85 2.85206C3 2.70069 3.1875 2.625 3.4125 2.625H5.85862C6.048 2.625 6.21506 2.68681 6.35981 2.81044C6.50456 2.93394 6.59663 3.08656 6.636 3.26831L7.06594 5.475C7.09569 5.67975 7.08944 5.85569 7.04719 6.00281C7.00481 6.14994 6.92881 6.2735 6.81919 6.3735L5.08706 8.05969C5.36581 8.57019 5.68431 9.05313 6.04256 9.5085C6.40069 9.96375 6.78844 10.3986 7.20581 10.8129C7.61731 11.2246 8.05481 11.6068 8.51831 11.9597C8.98181 12.3126 9.48231 12.6409 10.0198 12.9448L11.7028 11.2472C11.8202 11.1251 11.9623 11.0394 12.1292 10.9903C12.2959 10.9413 12.4693 10.9293 12.6491 10.9543L14.7317 11.3784C14.9211 11.4284 15.0756 11.5251 15.1954 11.6683C15.3151 11.8116 15.375 11.9741 15.375 12.1558V14.5875C15.375 14.8125 15.2993 15 15.1479 15.15C14.9966 15.3 14.8073 15.375 14.5802 15.375ZM4.55475 6.99525L5.89331 5.71444C5.91731 5.69519 5.93294 5.66875 5.94019 5.63512C5.94744 5.6015 5.94625 5.57025 5.93663 5.54137L5.61056 3.86531C5.60094 3.82694 5.58413 3.79812 5.56013 3.77887C5.53613 3.75962 5.50488 3.75 5.46638 3.75H3.8625C3.83363 3.75 3.80956 3.75962 3.79031 3.77887C3.77119 3.79812 3.76162 3.82219 3.76162 3.85106C3.8 4.36356 3.88387 4.88419 4.01325 5.41294C4.1425 5.94181 4.323 6.46925 4.55475 6.99525ZM11.0798 13.4769C11.5769 13.7087 12.0954 13.8859 12.6353 14.0085C13.1753 14.131 13.6798 14.2038 14.1489 14.2269C14.1778 14.2269 14.2019 14.2173 14.2211 14.1981C14.2404 14.1788 14.25 14.1548 14.25 14.1259V12.5481C14.25 12.5096 14.2404 12.4783 14.2211 12.4543C14.2019 12.4303 14.1731 12.4135 14.1347 12.4039L12.5597 12.0836C12.5308 12.074 12.5056 12.0728 12.4839 12.0801C12.4623 12.0873 12.4394 12.1029 12.4153 12.1269L11.0798 13.4769Z" fill="%23333333"/></svg>');  
+                }
+            }
+        }
+
+        .header-search-col {
+            padding-right: 0;
+            .header-search {
+                @media(max-width: 1080px) {
+                    max-width: 100%;
+                }
+                .header-search-btn {
+                    position: absolute;
+                    border: 0;
+                    left: 20px;
+                    padding: 0;
+                    top: 7px;
+                    height: 48px;
+                }
+                .header-search-icon {
+                    .icon {
+                        background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.1397 13.9016C16.4238 12.3009 17.0457 10.269 16.8777 8.22371C16.7096 6.17847 15.7642 4.27536 14.236 2.90573C12.7079 1.5361 10.713 0.804064 8.66159 0.860147C6.61022 0.91623 4.6583 1.75617 3.20722 3.20725C1.75614 4.65833 0.9162 6.61025 0.860117 8.66162C0.804034 10.713 1.53607 12.7079 2.9057 14.2361C4.27533 15.7643 6.17844 16.7096 8.22368 16.8777C10.2689 17.0458 12.3008 16.4238 13.9016 15.1397L21.536 22.7732C21.6167 22.8568 21.7132 22.9235 21.82 22.9693C21.9267 23.0152 22.0415 23.0393 22.1577 23.0403C22.2739 23.0413 22.3891 23.0192 22.4967 22.9752C22.6042 22.9312 22.7019 22.8662 22.784 22.7841C22.8662 22.7019 22.9312 22.6042 22.9752 22.4967C23.0192 22.3892 23.0413 22.2739 23.0403 22.1578C23.0393 22.0416 23.0152 21.9268 22.9693 21.82C22.9234 21.7133 22.8568 21.6167 22.7732 21.536L15.1397 13.9016ZM8.88346 15.1546C7.64314 15.1546 6.43069 14.7868 5.39941 14.0977C4.36812 13.4087 3.56434 12.4292 3.08969 11.2833C2.61504 10.1374 2.49086 8.87653 2.73283 7.66005C2.9748 6.44357 3.57207 5.32616 4.4491 4.44913C5.32613 3.5721 6.44354 2.97483 7.66002 2.73286C8.8765 2.49089 10.1374 2.61508 11.2833 3.08972C12.4292 3.56437 13.4086 4.36815 14.0977 5.39944C14.7868 6.43072 15.1546 7.64318 15.1546 8.88349C15.1539 10.5465 14.493 12.1412 13.317 13.3171C12.1411 14.493 10.5464 15.1539 8.88346 15.1546Z" fill="%237C7C7C"/></svg>');
+                        background-position: center;
+                        background-size: 22px;
+                        background-repeat: no-repeat;
+                    }
+                    svg {
+                        display: none;
+                    }
+                }
+                .input-group {
+                    position: relative;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: stretch;
+                    width: 100%;
+                    .header-search-input {
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #7C7C7C;
+                        border: 0.5px solid #7C7C7C;
+                        padding-left: 48px;
+                        height: 48px;
+                    }
+
+                    .icon>svg {
+                        color: #7C7C7C;
+                        fill: #7C7C7C;
+                        width: 22.18px;
+                        height: 22.18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .header-actions-col {
+        padding-left: 10px;
+        .icon {
+            color: #333333;
+        }
+
+        // Business Access button
+        .btn-business-access {
+            border-radius: 46px;
+            font-size: 14px;
+            font-family: 'Lato-Medium';
+            padding: 6px 16px;
+            white-space: nowrap;
+            line-height: 20px;
+            margin: 0px 7px 0px 0;
+            @media(max-width: 991px) {
+                font-size: 12px;
+                padding: 5px 10px;
+                margin: 0 4px 10px 0;
+            }
+            @media(max-width: 575px) {
+                font-size: 11px;
+                padding: 4px 8px;
+                margin: 0;
+            }
+        }
+        .account-menu {
+            .header-actions-btn {
+                font-size: 14px;
+                line-height: 20px;
+                color: #333333;
+                padding: 0;
+                text-transform: uppercase;
+                font-weight: normal;
+                @media(max-width: 1199px) {
+                    font-size: 0;
+                }
+                .dropdown-toggle::after {
+                    border-top: 0.5em solid;
+                    border-right: 0.5em solid transparent;
+                    border-bottom: 0;
+                    border-left: 0.5em solid transparent;
+                }
+            }
+        }
+
+        .top-bar-nav {
+            .languages-menu {
+                border: 0.5px solid $sw-color-brand-secondary;
+                padding: 0 14px;
+
+                .top-bar-nav-btn {
+                    font-size: 12px;
+                    color: $sw-color-brand-secondary;
+                }
+
+                .language-flag {
+                    height: 11px;
+                    width: 18px;
+                    border: 0;
+                    margin-top: 0;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+            .top-bar-nav-text {
+                padding-left: 6px;
+            }
+            .top-bar-list-item {
+                .dropdown-item {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.nav-main {
+    .main-navigation-menu {
+        .main-navigation-link {
+            font-size: 14px;
+            line-height: 20px;
+            color: #333333;
+            font-family: 'Lato-Medium';
+            .main-navigation-link-text {
+                border: none;
+            }
+        }
+
+        .nav-link:focus-visible {
+            outline: none;
+            box-shadow: none !important;
+        }
+    }
+}
+
+.header-row {
+    .header-logo-col { 
+        padding-right: 8px;
+        padding-bottom: 0;
+    }
+}
+body .header-logo-picture {
+    max-width: 260px;
+    min-width: 186px;
+}
+body {
+    .main-navigation-menu .nav-item:not(:last-child) {
+        @media(max-width: 1250px) {
+            padding-right: 10px;
+        }
+    }
+}
+// media query start 
+
+.nav-item:has(.home-link) {
+    display: none;
+}
+
+.is-act-home {
+    .container-main {
+        padding-top: 0;
+    }
+}
+body {
+    .header-main {
+        .header-row {
+            padding: 21px 0 6px;
+            @media(max-width: 992px) {
+                        padding-bottom: 20px !important;
+            }
+            @media(max-width:767px) {
+                        padding-bottom: 10px !important;
+            }
+        }
+    }
+    .home-banner {
+        @media(min-width: 991px) {
+            padding-top: 0;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    body {
+        .nav-main .main-navigation-menu .nav-item {
+            padding-right: 6px !important;
+        }
+        .nav-main .dropdown-toggle::after {
+            margin-left: 4px;
+        }
+    }
+}
+
+@media(max-width: 1060px) {
+    body {
+        .header-main .usp-bar-sections .usp-bar-items div span {
+            line-height: normal;
+        }
+        .header-main .usp-bar-sections .usp-bar-items div {
+            white-space: nowrap;
+                        line-height: 39px;
+            display: block;
+        }
+        .header-main .usp-bar-sections .usp-bar-items {
+            flex-wrap: nowrap;
+            gap: 36px;
+            justify-content: flex-start;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .header-main .usp-bar-sections {
+            padding: 3px 0 6px;
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    body {
+        .nav-main nav#main-navigation-menu {
+            padding: 0;
+        }
+        .header-main .header-row {
+            padding: 0;
+        }
+        .nav-main-toggle, .nav-main-toggle .nav-main-toggle-btn {
+            height: 100%;
+        }
+        .header-row .header-logo-col {
+            width: auto;
+        }
+        .header-main .header-row {
+            justify-content: space-between;
+        }
+        .header-main .header-row .header-service-menu {
+            width: auto;
+            padding-right: 20px;
+        } 
+        .header-main .header-actions-col {
+            width: 30%;
+        }
+        .header-main .header-row .header-search-col {
+            flex: revert;
+            width: 70%;
+        }
+        .header-main .header-row .header-search-col .nav-main-toggle button {
+            padding: 0;
+        }
+        .header-main .header-row .header-search-col .col:last-child {
+            padding-left: 0;
+        }
+        .header-main .header-actions-col .row {
+            justify-content: flex-end;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    body {
+        .container-main {
+            padding: 10px 0;
+        }
+         .header-main .header-row {
+            margin: 0;
+         }
+        .header-main .header-actions-col {
+            padding: 0;
+        }
+        .header-main .header-row .header-service-menu {
+            gap: 16px;
+        }
+         .header-main .header-row .header-service-menu,
+         .header-cart .header-cart-btn.header-actions-btn {
+            padding-right: 0;
+         }
+         .header-main .header-actions-col .menu-button .btn {
+            padding-left: 0;
+        } 
+        .header-row .header-logo-col {
+            padding-right: 0;
+            margin-top: 9px;
+            margin-bottom: 9px;
+            padding-left: 0;
+        }
+        .header-main .header-actions-col nav.top-bar-nav {
+            display: none;
+        }
+        .header-main .header-actions-col {
+            width: 30%;
+        }
+        .header-main .header-actions-col .icon.icon-my-account-icon {
+            width: 25px;
+            height: 25px;
+        }
+        .header-logo-picture {
+            max-width: 200px;
+            min-width: 150px;
+        }
+        .header-main .header-row .header-service-menu li .footer-link {
+            background-size: 25px;
+        }
+        .header-main .usp-bar-sections {
+            padding: 0px 0 5px;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .header-main {
+        .usp-bar-sections {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    body {
+        .header-main .header-actions-col,
+        .header-main .header-row .header-search-col {
+            width: 100%;
+        } 
+    }
+}
+
+@media(max-width: 375px) {
+    body {
+        .header-logo-picture {
+            max-width: 150px;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+/*
+Override variable defaults
+==================================================
+This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
+
+Because of the !default flags, theme variable overrides have to be declared beforehand.
+https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
+*/
+
+
+@font-face {
+	font-family: 'Lato-Regular';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Lato-Bold';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Lato-SemiBold';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Bold.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Lato-Medium';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Medium.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Medium.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Medium.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'PlayfairDisplay-Bold';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Bold.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Bold.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Bold.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'PlayfairDisplay-SemiBold';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-SemiBold.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-SemiBold.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-SemiBold.otf') format('otf'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'PlayfairDisplay-Medium';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: local(''),
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Medium.eot') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Medium.woff') format('woff'), /* Modern Browsers */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../../../bundles/hansandkniebestheme/storefront/assets/fonts/playfair/PlayfairDisplay-Medium.otf') format('otf'); /* Legacy iOS */
+}
+
+div, li, span, a, ul, ol, input, textarea, select, p, button, h1, h2, h3, h4, h5, h6, strong, b, dt, dd, td, th {
+	font-weight: normal !important;
+}
+
+html {
+	.container, .cms-section .boxed {
+	    max-width: 1240px;
+	}
+}
