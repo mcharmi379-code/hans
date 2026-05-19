@@ -1,45 +1,257 @@
 {% sw_extends '@ProxaBasketCrossSellingSW6/storefront/page/checkout/cart/index.html.twig' %}
 
-{% block page_checkout_aside_crossselings %}
-    {% if page.cart.extensions.sliderProducts.all and config('ProxaBasketCrossSellingSW6.config.proxaCrossSellingCartActive') %}
-        {% set config = {
-            'title': {
-                'value':  'proxa-basket-cross-selling.cart-slider-title'|trans
-            },
-            'border': {
-                'value': false
-            },
-            'rotate': {
-                'value': false
-            },
-            'boxLayout': {
-                'value': 'cart'
-            },
-            'elMinWidth': {
-                'value': '250px'
-            },
-            'navigation': {
-                'value': true
-            },
-            'displayMode': {
-                'value': 'standard'
-            },
-            'position' :{
-                'value': page.cart.extensions.sliderType.get(0)
-            },
-            'addToCartBtnShow': {
-                'value': 'cart'
-            },
-        } %}
-        {% block page_checkout_aside_crossselings_content %}
-            <div class="checkout-product-slider">
+{# ── Suppress parent cross-sell block — we render slider ourselves below ── #}
+{% block page_checkout_aside_crossselings %}{% endblock %}
+
+{# ── Cart header — render ABOVE both columns (main + aside) ── #}
+{% block page_checkout_container %}
+    <div class="hk-cart-page-header">
+        <h1 class="cart-main-header d-inline-block">
+            {{ 'checkout.cartHeader'|trans|sw_sanitize }}
+        </h1>
+        <span class="cart-main-header-item-counter d-inline-block mb-4 fw-bold ms-1 text-dark-emphasis">
+            ({{- 'checkout.itemCounter'|trans({'%count%': page.cart.lineItems|length})|sw_sanitize -}})
+        </span>
+    </div>
+    {{ parent() }}
+{% endblock %}
+
+{# Suppress the original header block so it doesn't render twice #}
+{% block page_checkout_cart_header %}{% endblock %}
+
+{% block page_checkout_cart_product_table %}
+    {{ parent() }}
+
+    {# Welcome discount info (promotion line item) rendered as compact row below items #}
+    {% set promoItem = null %}
+    {% for lineItem in page.cart.lineItems %}
+        {% if promoItem is null and lineItem.type == 'promotion' %}
+            {% set promoItem = lineItem %}
+        {% endif %}
+    {% endfor %}
+
+    {% if promoItem %}
+        {% set promoPercent = null %}
+        {% if promoItem.payload.discountType is defined and promoItem.payload.discountType == 'percentage' and promoItem.payload.discountValue is defined %}
+            {% set promoPercent = promoItem.payload.discountValue %}
+        {% endif %}
+
+        <div class="hk-cart-discount" aria-label="{{ promoItem.label|striptags }}">
+            <div class="hk-cart-discount__left">
+                <svg class="hk-cart-discount__icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v4.086a1.5 1.5 0 0 0 .44 1.06l6.914 6.914a1.5 1.5 0 0 0 2.122 0l4.038-4.038a1.5 1.5 0 0 0 0-2.122L7.646 1.44A1.5 1.5 0 0 0 6.586 1H2.5Zm-.5 1.5A.5.5 0 0 1 2.5 2h4.086a.5.5 0 0 1 .353.146l6.914 6.914a.5.5 0 0 1 0 .708l-4.038 4.038a.5.5 0 0 1-.708 0L2.146 6.939A.5.5 0 0 1 2 6.586V2.5Z"/>
+                    <path d="M4.5 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/>
+                </svg>
+                <span class="hk-cart-discount__label">{{ promoItem.label|sw_sanitize }}</span>
+                {% if promoPercent is not null %}
+                    <span class="hk-cart-discount__badge">{{ promoPercent }}%</span>
+                {% endif %}
+            </div>
+            <div class="hk-cart-discount__value">
+                {{ promoItem.price.totalPrice|currency }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# Remove cart table column headings (Product / Quantity / Unit price / Subtotal) #}
+{% block page_checkout_cart_table_header %}{% endblock %}
+
+{# ── Cart items: render product items only, skip promotions ── #}
+{% block page_checkout_cart_table_items %}
+    {% set showSubtotal = config('core.cart.showSubtotal') %}
+    {% set showTaxPrice = false %}
+    {% for lineItem in page.cart.lineItems %}
+        {% if lineItem.type != 'promotion' %}
+            {% sw_include '@Storefront/storefront/component/line-item/line-item.html.twig' with {
+                showSubtotal: showSubtotal,
+                showTaxPrice: showTaxPrice
+            } %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{# ── Promotion rows — iterate directly, no |length pre-check ── #}
+{% block page_checkout_cart_hidden_line_items_information %}
+    {% set hasPromo = false %}
+    {% set promoHtml = '' %}
+    {% for lineItem in page.cart.lineItems %}
+        {% if lineItem.type == 'promotion' %}
+            {% set hasPromo = true %}
+            {% set discountPct = null %}
+            {% if lineItem.payload.discountType is defined and lineItem.payload.discountType == 'percentage' and lineItem.payload.discountValue is defined %}
+                {% set discountPct = lineItem.payload.discountValue %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {{ parent() }}
+{% endblock %}
+
+
+{# ── Trust badges + cross-sell slider after cart content ── #}
+{% block page_checkout_cart_add_product_and_shipping %}
+    {# Add-by-number + Shipping details (replaces old benefits list) #}
+    <div class="hk-cart-benefits" aria-label="Cart tools">
+        <div class="row g-2 align-items-start">
+            {% sw_include '@Storefront/storefront/component/checkout/add-product-by-number.html.twig' %}
+
+            <div class="col-md-7 cart-shipping-costs-container">
+                <form name="precalc"
+                      method="post"
+                      action="{{ path('frontend.checkout.configure') }}"
+                      data-form-auto-submit="true">
+                    {% set PHYSICAL_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_PHYSICAL') %}
+                    {% if page.cart.lineItems.hasLineItemWithState(PHYSICAL_STATE) %}
+                        <a class="btn btn-link cart-shipping-costs-btn"
+                           data-bs-toggle="collapse"
+                           href="#collapseShippingCost"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="collapseShippingCost">
+                            {{ 'checkout.shippingCosts'|trans|sw_sanitize }}
+                        </a>
+                    {% endif %}
+
+                    <div class="collapse" id="collapseShippingCost">
+                        {% if not context.customer %}
+                            <div class="form-group">
+                                <label for="countryId">{{ 'checkout.shippingCountry'|trans|sw_sanitize }}</label>
+                                <select class="form-select" type="text" id="countryId" name="countryId">
+                                    {% for country in page.countries %}
+                                        <option value="{{ country.id }}"
+                                            {{ country.id == context.shippingLocation.country.id ? 'selected=\"selected\"' : '' }}>
+                                            {{ country.translated.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="paymentMethodId">{{ 'checkout.paymentMethod'|trans|sw_sanitize }}</label>
+                            <select class="form-select" type="text" id="paymentMethodId" name="paymentMethodId">
+                                {% for payment in page.paymentMethods %}
+                                    <option value="{{ payment.id }}"
+                                        {% if payment.id == context.paymentMethod.id %} selected="selected"{% endif %}>
+                                        {{ payment.translated.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shippingMethodId">{{ 'checkout.shippingMethod'|trans|sw_sanitize }}</label>
+                            <select class="form-select" type="text" id="shippingMethodId" name="shippingMethodId">
+                                {% for shipping in page.shippingMethods %}
+                                    <option value="{{ shipping.id }}"
+                                        {% if shipping.id == context.shippingMethod.id %} selected="selected"{% endif %}>
+                                        {{ shipping.translated.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {# Cross-sell slider — only if plugin is active; use .first not .get(0) to avoid generator rewind #}
+    {% if config('ProxaBasketCrossSellingSW6.config.proxaCrossSellingCartActive') %}
+        {% set sliderExt = page.cart.extensions.sliderProducts %}
+        {% set sliderTypeExt = page.cart.extensions.sliderType %}
+        {% if sliderExt %}
+            {% set sliderConfig = {
+                'title':            { 'value': 'proxa-basket-cross-selling.cart-slider-title'|trans },
+                'border':           { 'value': false },
+                'rotate':           { 'value': false },
+                'boxLayout':        { 'value': 'cart' },
+                'elMinWidth':       { 'value': '200px' },
+                'navigation':       { 'value': true },
+                'displayMode':      { 'value': 'standard' },
+                'position':         { 'value': sliderTypeExt ? sliderTypeExt.first : null },
+                'addToCartBtnShow': { 'value': 'cart' }
+            } %}
+            <div class="checkout-product-slider hk-cart-slider">
                 <div class="col-12">
-                    {% sw_include '@Storefront/storefront/element/cms-element-cart-product-slider.html.twig' with {
-                        elements: page.cart.extensions.sliderProducts.all,
-                        sliderConfig: config,
-                    } %}
+                    <div class="hk-love-slider-wrap" data-hk-love-slider>
+                        <div class="hk-love-slider-header">
+                            <div class="hk-love-slider-header__title">
+                                {{ sliderConfig.title.value|default('You will love')|sw_sanitize }}
+                            </div>
+                            <div class="hk-love-slider-header__controls">
+                                <button class="hk-love-slider-header__btn" type="button" data-hk-love-slider-prev aria-label="Previous">
+                                    {% sw_icon 'arrow-head-left' %}
+                                </button>
+                                <button class="hk-love-slider-header__btn" type="button" data-hk-love-slider-next aria-label="Next">
+                                    {% sw_icon 'arrow-head-right' %}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hk-love-slider">
+                            <div class="hk-love-slider__track" data-hk-love-slider-track>
+                                {% for product in sliderExt.all %}
+                                    <div class="hk-love-slider__item">
+                                        {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                            'layout': sliderConfig.boxLayout.value,
+                                            'displayMode': sliderConfig.displayMode.value,
+                                            'showAddToCartBtn': sliderConfig.addToCartBtnShow.value
+                                        } %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        {% endblock %}
+        {% endif %}
     {% endif %}
+{% endblock %}
+
+{# ── Aside actions: CTA → PayPal (via empty stubs, SwagPayPal fills them) → voucher → SSL ── #}
+{% block page_checkout_aside_actions %}
+
+    {% block page_checkout_cart_action_proceed %}
+        <div class="checkout-aside-action d-grid">
+            <a href="{{ path('frontend.checkout.confirm.page') }}"
+               class="btn btn-primary btn-lg cart-btn-checkout"
+               title="{{ 'checkout.proceedLink'|trans|striptags }}">
+                {{ 'checkout.proceedLink'|trans|sw_sanitize }}
+            </a>
+        </div>
+    {% endblock %}
+
+    {% block page_checkout_aside_actions_paypal_express_button %}{% endblock %}
+    {% block page_checkout_aside_actions_paypal_installment_banner %}{% endblock %}
+
+    <div class="checkout-aside-action">
+        {% block page_checkout_cart_add_promotion %}
+            <form action="{{ path('frontend.checkout.promotion.add') }}"
+                  class="cart-add-promotion"
+                  method="post">
+                <input type="hidden" name="redirectTo" value="frontend.checkout.cart.page">
+                <label class="cart-voucher-label" for="addPromotionInput">
+                    {{ 'checkout.addPromotionLabel'|trans|sw_sanitize }}
+                </label>
+                <div class="input-group cart-voucher-group">
+                    <input type="text"
+                           name="code"
+                           class="form-control cart-voucher-input"
+                           placeholder="{{ 'checkout.addPromotionPlaceholder'|trans|striptags }}"
+                           id="addPromotionInput"
+                           aria-label="{{ 'checkout.addPromotionLabel'|trans|striptags }}"
+                           aria-describedby="addPromotion"
+                           required="required"
+                           aria-invalid="false">
+                    <button class="btn cart-voucher-btn" type="submit" id="addPromotion">
+                        {{ 'checkout.addPromotionSubmit'|trans|default('Redeem')|sw_sanitize }}
+                    </button>
+                </div>
+            </form>
+        {% endblock %}
+    </div>
+
+    
+
 {% endblock %}

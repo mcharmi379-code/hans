@@ -1,0 +1,59 @@
+{% sw_extends '@Storefront/storefront/component/line-item/type/product.html.twig' %}
+
+{# Replace image block: show letter-avatar when no cover image #}
+{% block component_line_item_type_product_image %}
+    <div class="col-auto line-item-info-img">
+        <div class="line-item-img-container">
+            {% if lineItem.cover.url %}
+                {% block component_line_item_type_product_image_inner %}
+                    {% sw_include '@Storefront/storefront/component/line-item/element/image.html.twig' with {
+                        lineItemLink: seoUrl('frontend.detail.page', { productId: lineItem.referencedId }),
+                    } %}
+                {% endblock %}
+            {% else %}
+                <div class="line-item-letter-avatar" aria-hidden="true">
+                    {{ lineItem.label|first|upper }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{# Inline product number + delivery date inside details #}
+{% block component_line_item_type_product_number %}
+    <div class="line-item-product-number">
+        {{ 'checkout.cartItemInfoId'|trans|sw_sanitize }} {{ lineItem.payload.productNumber }}
+    </div>
+{% endblock %}
+
+{# Move quantity selector below delivery period inside details (reference layout) #}
+{% block component_line_item_type_product_col_quantity %}{% endblock %}
+
+{% block component_line_item_type_product_delivery_date %}
+    {{ parent() }}
+
+    <div class="hk-line-item-quantity-below">
+        {% sw_include '@Storefront/storefront/component/line-item/element/quantity.html.twig' %}
+    </div>
+{% endblock %}
+
+{# Move subtotal/total price to the top-right near the remove (X) button #}
+{% block component_line_item_type_product_col_total_price %}{% endblock %}
+
+{# Hide unit price / tax price columns; show only total in our custom remove column #}
+{% block component_line_item_type_product_col_unit_price %}{% endblock %}
+{% block component_line_item_type_product_col_tax_price %}{% endblock %}
+
+{% block component_line_item_type_product_col_remove %}
+    <div class="line-item-remove hk-line-item-remove-col">
+        {% if lineItem.removable and nestingLevel < 1 %}
+            {% sw_include '@Storefront/storefront/component/line-item/element/remove.html.twig' %}
+        {% endif %}
+
+        <div class="hk-line-item-total-top">
+            {% sw_include '@Storefront/storefront/component/line-item/element/total-price.html.twig' with {
+                currency: lineItem.order.currency.isoCode
+            } %}
+        </div>
+    </div>
+{% endblock %}

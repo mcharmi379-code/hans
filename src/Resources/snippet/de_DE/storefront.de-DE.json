@@ -6,11 +6,17 @@
       "language": "Deutsche Handwerkskunst",
       "businessman": "Seit 1926 - 100 Jahre Spitzenleistungen in der Körperpflege"
     },
-      "b2b": {
-        "registrationFormTitle": "B2B-Anmeldeformular",
-        "registerHint": "Nutzen Sie das B2B-Registrierungsformular, um ein neues Konto zu erstellen.",
-        "openRegistration": "Anmeldeformular öffnen"
-      }
+    "b2b": {
+      "registrationFormTitle": "B2B-Anmeldeformular",
+      "registerHint": "Nutzen Sie das B2B-Registrierungsformular, um ein neues Konto zu erstellen.",
+      "openRegistration": "Anmeldeformular öffnen"
+    },
+    "cart": {
+      "benefitsLabel": "Vorteile im Warenkorb",
+      "benefitShipping": "Versand ab 50 €",
+      "benefitSecurePayment": "Sicher bezahlen",
+      "benefitGift": "Geschenk ab 75 €"
+    }
   },
   "header": {
     "accountTitle": "Mein Konto",
@@ -40,6 +46,9 @@
   },
   "newsletter": {
     "subscribeMessage": "Exklusive Gratisgeschenke bei ihrer Bestellung - nur für Newsletter-Abonnenten"
+  },
+  "checkout": {
+    "addPromotionSubmit": "Einlösen"
   },
   "b2b": {
     "requestAccess": {

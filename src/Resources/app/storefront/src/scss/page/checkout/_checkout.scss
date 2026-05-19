@@ -50,6 +50,7 @@
 			@include media-breakpoint-up(lg) {
 				margin-left: 0;
 			}
+			
 		}
 
 		.checkout-aside {
@@ -87,6 +88,698 @@
 .cart-main-header-item-counter {
     font-size: 16px;
 }
+
+.is-act-cartpage {
+	--hk-brand: #B93A58;
+	--hk-bg: #fbf7f7;
+	--hk-card: #ffffff;
+	--hk-border: rgba(185, 58, 88, 0.16);
+	--hk-radius: 12px;
+
+	// Fix bootstrap input-group spacing in cart:
+	// Apply ONLY to the voucher input group; the same negative margin breaks the quantity +/- input group on some widths.
+	.cart-voucher-group {
+		> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+			margin-left: calc(var(--bs-border-width) * -6);
+		}
+	}
+
+	// Ensure quantity selector buttons never get pushed outside the container
+	.checkout-product-table .quantity-selector-group {
+		flex: 0 0 auto;
+		flex-shrink: 0;
+		min-width: 0;
+
+		> :not(:first-child) {
+			margin-left: 0 !important;
+		}
+	}
+
+	// Some breakpoints squeeze the quantity column; don't allow the wrapper to clip the + button
+	.checkout-product-table .line-item-quantity-select-wrapper {
+		overflow: visible;
+	}
+
+	// Laptop + desktop: match aside spacing (same as XL)
+	@include media-breakpoint-up(lg) {
+		.checkout-aside {
+			padding: 24px !important;
+		}
+	}
+
+	.checkout {
+		background: oklch(98.5% .003 60);
+	}
+
+	.hk-cart-page-header {
+	    margin-left: calc(var(--bs-border-width) * -6);	padding: 16px 16px 0;
+
+		@include media-breakpoint-up(md) {
+			padding: 20px 20px 0;
+		}
+
+		@include media-breakpoint-up(lg) {
+			padding: 24px 24px 0;
+		}
+	}
+
+	.checkout-container {
+		.checkout-main {
+			padding: 16px;
+
+			@include media-breakpoint-up(md) {
+				padding: 24px;
+			}
+			@include media-breakpoint-up(lg) {
+				padding: 24px;
+			}
+		}
+
+		.checkout-aside {
+			@include media-breakpoint-down(lg) {
+				padding: 24px;
+			}
+		}
+	}
+
+	// XL: ensure aside gets expected inner spacing (overrides `.col-xl-4` shared rules)
+	@media (min-width: 1200px) {
+		.checkout .checkout-aside,
+		.checkout-aside {
+			padding: 24px;
+		}
+	}
+
+	.hk-cart-header {
+		margin-bottom: 16px;
+
+		.hk-cart-header__title {
+			display: flex;
+			align-items: baseline;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.cart-main-header {
+			margin: 0;
+			font-family: $sw-font-family-headline;
+			letter-spacing: -0.01em;
+		}
+
+		.cart-main-header-item-counter {
+			margin: 0;
+		}
+	}
+
+	.hk-cart-benefits {
+		margin: 10px 0 0;
+		display: block;
+		padding: 16px 10px 12px;
+		border-radius: var(--hk-radius);
+		border: 1px solid var(--hk-border);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+		background: var(--hk-card);
+
+		@include media-breakpoint-up(md) {
+			padding: 25px 14px 17px 14px;
+		}
+	}
+
+	.hk-cart-benefits .cart-shipping-costs-btn {
+		padding-left: 0;
+		padding-right: 0;
+		color: var(--hk-brand);
+		font-weight: 600;
+	}
+
+	// MindsShoppingCartGoals ("Included at cart value") sizing/alignment:
+	// remove Bootstrap row/gutter effect so width matches the cart table below.
+	.scg-main.scg-big.row {
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.scg-main.scg-big.row > [class*='col-'] {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.scg-main .scg-wrapper {
+		width: 100%;
+	}
+
+	// Gift icon: uses fill="currentColor" so set color, not fill.
+	.hk-icon-gift {
+		color: #B93A58;
+		fill: currentColor;
+	}
+
+	.hk-cart-after-details {
+		margin-top: 12px;
+	}
+
+	.hk-cart-slider {
+		margin-top: 16px;
+	}
+
+	.hk-love-slider-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 8px 2px 10px;
+	}
+
+	.hk-love-slider-header__title {
+		font-weight: 700;
+		font-family: $sw-font-family-headline;
+	}
+
+	.hk-love-slider-header__controls {
+		display: inline-flex;
+		gap: 8px;
+	}
+
+	.hk-love-slider-header__btn {
+		width: 32px;
+		height: 32px;
+		border-radius: 999px;
+		border: 1px solid var(--hk-border);
+		background: var(--hk-card);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		line-height: 0;
+	}
+
+	.hk-love-slider-header__btn .icon {
+		width: 100%;
+		height: 100%;
+		color: var(--hk-brand);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hk-love-slider-header__btn .icon svg {
+		display: block;
+		margin: 0;
+		width: 14px;
+		height: 14px;
+		position: static;
+	}
+
+	.hk-love-slider-header__btn:disabled {
+		opacity: 0.35;
+		cursor: not-allowed;
+	}
+
+	.hk-love-slider-header__btn:disabled .icon {
+		color: rgba(185, 58, 88, 0.65);
+	}
+
+	.hk-love-slider {
+		border-radius: var(--hk-radius);
+		border: 1px solid var(--hk-border);
+		background: var(--hk-card);
+		padding: 14px;
+		overflow: hidden;
+	}
+
+	.hk-love-slider__track {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: calc((100% - 12px) / 2);
+		gap: 12px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		padding-bottom: 2px;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		scrollbar-width: none;
+
+		@include media-breakpoint-down(md) {
+			grid-auto-columns: 100%;
+		}
+	}
+
+	.hk-love-slider__item {
+		scroll-snap-align: start;
+	}
+
+	// Keep slider cards same height so actions align
+	.hk-love-slider__item .product-box {
+		height: 100%;
+	}
+
+	.hk-love-slider__item .product-box .card-body {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.hk-love-slider__item .product-action {
+		margin-top: auto;
+	}
+	ul.card-body.list-unstyled {
+    background: var(--hk-card);
+}
+	.checkout-product-table.card {
+		border-radius: var(--hk-radius);
+		border: 1px solid var(--hk-border);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+		background: transparent;
+	}
+
+	// Keep promotion/discount row visually attached to the table
+	.checkout-product-table {
+		margin-bottom: 0 !important;
+	}
+
+	.checkout-product-table .card-body {
+		padding: 12px;
+
+		@include media-breakpoint-up(md) {
+			padding: 16px;
+		}
+	}
+
+	.checkout-product-table .line-item {
+		border: 1px solid var(--hk-border);
+		border-radius: var(--hk-radius);
+		background: var(--hk-card);
+		padding: 12px;
+		margin-bottom: 12px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.checkout-product-table .line-item-row {
+		align-items: stretch;
+	}
+
+	.checkout-product-table .line-item-info-img .line-item-img-container {
+		width: 64px;
+		height: 64px;
+		border-radius: 10px;
+		background: rgba(185, 58, 88, 0.06);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include media-breakpoint-up(md) {
+			width: 72px;
+			height: 72px;
+		}
+	}
+
+	.checkout-product-table .line-item-letter-avatar {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		place-items: center;
+		font-family: $sw-font-family-headline;
+		font-size: 22px;
+		color: var(--hk-brand);
+	}
+
+	.checkout-product-table .line-item-details-container .line-item-label {
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.checkout-product-table .line-item-product-number {
+		font-size: 12px;
+		color: $sw-text-color;
+		opacity: 0.75;
+		margin-top: 4px;
+	}
+
+	.checkout-product-table .line-item-remove {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.checkout-product-table .line-item-remove .btn {
+		min-width: 44px;
+		min-height: 44px;
+		border-radius: 10px;
+	}
+
+	// Line item layout tweaks (reference: quantity below delivery, total top-right)
+	.hk-line-item-quantity-below {
+		margin-top: 10px;
+	}
+
+	.hk-line-item-remove-col {
+		margin-left: auto;
+		min-width: 72px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: flex-start;
+		gap: 10px;
+		padding-left: 12px;
+	}
+
+	.hk-line-item-total-top {
+		margin-top: 0;
+		font-weight: 700;
+		white-space: nowrap;
+		margin-top: auto;
+	}
+
+	.hk-line-item-remove-col .line-item-remove-button {
+		align-self: flex-end;
+	}
+
+	// Mobile/tablet: pin X to top-right and total to bottom-right like the reference
+	@include media-breakpoint-down(md) {
+		.checkout-product-table .line-item {
+			position: relative;
+		}
+
+		.checkout-product-table .line-item-details-container {
+			padding-right: 72px;
+		}
+
+		.hk-line-item-remove-col {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			height: calc(100% - 20px);
+			min-width: 0;
+			padding-left: 0;
+			gap: 8px;
+		}
+	}
+
+	// Quantity selector: ensure +/- never get clipped on very small widths (320/375/425)
+	@include media-breakpoint-down(sm) {
+		// Undo any 50% split widths on small screens
+		.line-item-quantity-label,
+		.line-item-quantity-select-wrapper {
+			width: auto !important;
+		}
+
+		.hk-line-item-quantity-below {
+			.quantity-selector-group {
+				display: inline-flex;
+				width: 123px;
+				max-width: 100%;
+			}
+
+			.quantity-selector-group > .btn {
+				width: 32px;
+				height: 32px;
+			}
+
+			.quantity-selector-group > .quantity-selector-group-input {
+				width: 40px;
+				min-width: 40px;
+				height: 32px;
+				padding: 0;
+				font-size: 13px;
+			}
+		}
+	}
+
+	// Quantity selector — fix broken Bootstrap input-group button layout
+	.checkout-product-table .line-item-quantity-select-wrapper {
+		.line-item-quantity-container {
+			width: 100%;
+		}
+	}
+
+	.checkout-product-table .quantity-selector-group {
+		display: inline-flex;
+		flex-wrap: nowrap;
+		align-items: stretch;
+		border-radius: 10px;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid var(--hk-border);
+		max-width: 100%;
+		// reset Bootstrap input-group stacking
+		> .btn {
+			position: static;
+			z-index: auto;
+			flex: 0 0 auto;
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(185, 58, 88, 0.04);
+			border: 0;
+			border-radius: 0;
+			color: #B93A58;
+			box-shadow: none;
+			line-height: 0;
+
+			&:hover {
+				background: rgba(185, 58, 88, 0.12);
+			}
+
+			.icon {
+				width: 12px;
+				height: 12px;
+				color: inherit;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: auto;
+				line-height: 0;
+
+				svg {
+					display: block;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		> .quantity-selector-group-input {
+			flex: 1 1 auto;
+			min-width: 40px;
+			width: 44px;
+			height: 40px;
+			padding: 0 4px;
+			border: 0;
+			border-left: 1px solid var(--hk-border);
+			border-right: 1px solid var(--hk-border);
+			border-radius: 0;
+			text-align: center;
+			font-weight: 600;
+			box-shadow: none;
+			-moz-appearance: textfield;
+
+			&::-webkit-inner-spin-button,
+			&::-webkit-outer-spin-button {
+				-webkit-appearance: none;
+			}
+		}
+	}
+
+	// Plus button icon vertical alignment tweak
+	button.btn.btn-outline-light.btn-plus.js-btn-plus {
+		padding-bottom: 6px;
+	}
+
+	.hk-cart-discount {
+		padding: 10px 12px;
+		border: 1px solid var(--hk-border);
+		border-radius: var(--hk-radius);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 14px;
+	}
+
+	.hk-cart-discount__left {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		min-width: 0;
+	}
+
+	.hk-cart-discount__left .icon {
+		color: var(--hk-brand);
+	}
+
+	.hk-cart-discount__label {
+		font-weight: 600;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.hk-cart-discount__badge {
+		border: 1px solid rgba(185, 58, 88, 0.35);
+		color: #B93A58;
+		background: rgba(185, 58, 88, 0.06);
+		border-radius: 999px;
+		padding: 2px 8px;
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 18px;
+		flex: 0 0 auto;
+	}
+
+	.hk-cart-discount__value {
+		font-weight: 700;
+		white-space: nowrap;
+		color: #B93A58;
+	}
+
+	.hk-cart-discount__icon {
+		color: #B93A58;
+		flex: 0 0 auto;
+	}
+
+	.hk-cart-benefits {
+		justify-items: center;
+	}
+
+	.hk-cart-benefits__item {
+		justify-content: center;
+	}
+
+	// Tablet + mobile: stack checkout columns (summary below items, full width)
+	.checkout-container > .row {
+		@include media-breakpoint-down(lg) {
+			flex-direction: column;
+		}
+	}
+
+	.checkout-container {
+		.checkout-main,
+		.checkout-aside {
+			@include media-breakpoint-down(lg) {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+		}
+
+		// Bootstrap `offset-md-*` (or plugin overrides) can push the aside to the right on tablet.
+		// Ensure the summary is full width on md (< lg).
+		.checkout-aside {
+			@include media-breakpoint-between(md, lg) {
+				margin-left: 0 !important;
+			}
+		}
+
+		.checkout-main {
+			@include media-breakpoint-down(lg) {
+				order: 1;
+			}
+		}
+
+		.checkout-aside {
+			@include media-breakpoint-down(lg) {
+				order: 2;
+			}
+		}
+	}
+
+	// Slider: keep "variant characteristics" from pushing the CTA down
+	.hk-love-slider {
+		.product-variant-characteristics {
+			min-height: 18px;
+		}
+
+		.product-variant-characteristics-text {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.checkout-aside-container {
+		@include media-breakpoint-up(lg) {
+			position: sticky;
+			top: 16px;
+		}
+		background: transparent;
+		border-radius: var(--hk-radius);
+		border: 1px solid var(--hk-border);
+		overflow: hidden;
+		background: var(--hk-card);
+	}
+
+	// .checkout-aside-summary {
+		// background: transparent;
+		// border-radius: var(--hk-radius);
+		// border: 1px solid var(--hk-border);
+		// overflow: hidden;
+		// background: var(--hk-card);
+
+
+	// }
+
+	.checkout-aside-summary-header {
+		margin: 0;
+		padding: 14px 16px;
+		// background: var(--hk-card);
+		border-bottom: 1px solid var(--hk-border);
+		font-family: $sw-font-family-headline;
+	}
+
+	.checkout-aside-summary-list-container {
+		padding: 10px 16px 14px;
+		// background: var(--hk-card);
+	}
+
+	.checkout-aside-action {
+		margin-top: 12px;
+		padding: 10px 16px 14px;
+	}
+
+	.begin-checkout-btn {
+		min-height: 48px;
+		border-radius: 10px;
+		background: var(--hk-brand);
+		border-color: var(--hk-brand);
+		font-weight: 700;
+
+		&:hover,
+		&:focus {
+			background: darken(#B93A58, 6%);
+			border-color: darken(#B93A58, 6%);
+		}
+	}
+
+	.checkout-aside-add-code .form-control,
+	.checkout-aside-add-code .btn {
+		min-height: 44px;
+		border-radius: 10px;
+	}
+
+	.checkout-aside-add-code .checkout-aside-add-promotion-button {
+		min-width: 92px;
+		font-weight: 600;
+	}
+
+	.checkout-aside-add-code .btn {
+		border-color: var(--hk-border);
+	}
+
+	.btn:focus-visible,
+	.form-control:focus-visible,
+	.form-select:focus-visible {
+		outline: 2px solid rgba(185, 58, 88, 0.45);
+		outline-offset: 2px;
+	}
+}
 body {
 	.checkout-aside-summary {
 		background-color: transparent;
@@ -106,62 +799,231 @@ body {
 	}
 }
 
+// Issue 3: fix gift icon — was .svg.hk-icon-gift (invalid) and used fill instead of color
+.hk-icon-gift {
+	color: #B93A58;
+	fill: currentColor;
+}
+
 .checkout-product-slider {
+	// make sure our slider styles also apply when the cross-selling plugin
+	// renders outside of the cart page include wrapper.
+	@at-root .cms-element-cart-product-slider {
+		.base-slider.cart-product-slider {
+			position: relative;
+		}
+	}
+
 	.cms-element-cart-product-slider {
-		.product-slider-controls-container {
-			.product-slider-controls-prev,
-			.product-slider-controls-next {
-				width: 35px;
-				height: 35px;
-				line-height: 35px;
-			    display: flex;
-			    align-items: center;
-			    justify-content: center;
-				.icon {
-					width: 20px;
-    				height: 20px;
-    				svg {
-    					top: 0;
-    				}
+		.base-slider {
+			position: relative;
+		}
+
+		// Header row: title left, prev/next buttons right
+		.hk-slider-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			margin-bottom: 14px;
+		}
+
+		.hk-slider-head__controls {
+			display: flex;
+			gap: 6px;
+			flex-shrink: 0;
+		}
+
+		.product-slider-controls-prev,
+		.product-slider-controls-next {
+			width: 32px;
+			height: 32px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: #fff;
+			border: 1px solid rgba(0, 0, 0, 0.12);
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+			cursor: pointer;
+			transition: border-color 0.15s, background 0.15s;
+
+			&:hover {
+				background: rgba(185, 58, 88, 0.05);
+				border-color: rgba(185, 58, 88, 0.30);
+			}
+
+			&[disabled] {
+				opacity: 0.35;
+				cursor: default;
+				pointer-events: none;
+			}
+
+			.icon {
+				width: 12px;
+				height: 12px;
+				color: #333;
+
+				svg {
+					top: 0;
 				}
 			}
 		}
 
+		.cms-element-title {
+			// override plugin's padding-bottom: 25px
+			padding-bottom: 0 !important;
+
+			.cms-element-title-paragraph {
+				font-size: 16px;
+				line-height: 24px;
+				text-align: left !important;
+				font-weight: 700;
+				margin: 0;
+			}
+		}
+
+		// Clip the sliding track — critical for tns to hide off-screen clones
+		.product-slider-inner {
+			overflow: hidden;
+		}
+
+		// Each slide item — tns sets inline width, we just need consistent padding
+		.product-slider-item {
+			box-sizing: border-box;
+		}
+
 		.product-box {
+			border-radius: var(--hk-radius, 12px);
+			border: 1px solid rgba(185, 58, 88, 0.16);
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+			height: 100%;
+
 			.card-body {
+				padding: 10px;
+
 				.product-image-wrapper {
-					padding-top: 80%;
+					padding-top: 85%;
 				}
 
 				.product-info {
-					margin-top: 10px;
+					margin-top: 8px;
 
 					.product-name {
-						font-size: 14px;
-						line-height: 18px;
-						min-height: 55px;
-						padding-bottom: 3px;
+						font-size: 13px;
+						line-height: 17px;
+						min-height: 0;
+						padding-bottom: 4px;
 					}
 				}
 
-				.product-price-info {
-					.product-price {
-						font-size: 14px;
-						line-height: 20px;
-					}
+				.product-price-info .product-price {
+					font-size: 13px;
+					line-height: 20px;
+					font-weight: 700;
+					color: var(--hk-brand, #B93A58);
 				}
 
-				.product-action {
-					.btn {
-						font-size: 11px;
-						height: 28px;
-						min-width: unset;
-						max-width: unset;
-						width: 100%;
-						line-height: 26px;
-					}
+				.product-action .btn {
+					font-size: 12px;
+					min-height: 38px;
+					width: 100%;
+					line-height: 1.1;
+					border-radius: 8px;
 				}
 			}
+		}
+	}
+}
+
+.cms-element-cart-product-slider {
+	.product-slider-controls-container {
+		gap: 6px;
+	}
+
+	.product-slider-controls-prev,
+	.product-slider-controls-next {
+		&:focus-visible {
+			outline: 2px solid rgba(185, 58, 88, 0.45);
+			outline-offset: 2px;
+		}
+
+		.icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				display: block;
+			}
+		}
+	}
+}
+
+.is-act-cartpage {
+	// "included at cart value" progress styling
+	// Colors come from MindsShoppingCartGoals "Design" config (scg/design) via theme variables.
+	$_scgBase: if(global-variable-exists(scg-base-color), $scg-base-color, rgba(185, 58, 88, 0.55));
+	$_scgProgress: if(global-variable-exists(scg-progress-color), $scg-progress-color, #B93A58);
+
+	.scg-main .scg-wrapper .progressbar {
+		li:before {
+			border-color: $_scgBase;
+			color: $_scgBase;
+		}
+
+		li:after {
+			background-color: $_scgBase;
+		}
+
+		li.active:before,
+		li.active:after {
+			background-color: $_scgProgress;
+			border-color: $_scgProgress;
+			color: #fff;
+		}
+	}
+
+	// summary discount row styling
+	.hk-summary-discount-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: 8px;
+		padding: 2px 8px;
+		border-radius: 999px;
+		font-size: 11px;
+		line-height: 16px;
+		color: #B93A58;
+		background: rgba(185, 58, 88, 0.08);
+		border: 1px solid rgba(185, 58, 88, 0.14);
+	}
+
+	.hk-summary-discount-value {
+		color: #B93A58;
+	}
+
+	// remove button: icon-only with brand hover (no visible box)
+	.line-item-remove-button {
+		border: 0 !important;
+		background: transparent !important;
+		box-shadow: none !important;
+		padding: 6px !important;
+		min-width: 32px !important;
+		min-height: 32px !important;
+		border-radius: 8px !important;
+
+		.icon {
+			color: rgba(0, 0, 0, 0.55);
+		}
+
+		&:hover .icon {
+			color: #B93A58;
+		}
+
+		&:focus-visible {
+			outline: 2px solid rgba(185, 58, 88, 0.45);
+			outline-offset: 2px;
 		}
 	}
 }
@@ -175,4 +1037,19 @@ body {
 			}
 		}
 	}
+	.scg-main {
+		border-radius: var(--hk-radius);
+		border: 1px solid var(--hk-border);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+	    background: var(--hk-card);
+		    margin-bottom: 14px;
+	}
+	.product-slider-container{
+		display: flex;
+	}
+	#tns4 > .tns-item
+	{
+		    width: 50%;
+	}
+	// gift icon color handled by .hk-icon-gift rule above
 }

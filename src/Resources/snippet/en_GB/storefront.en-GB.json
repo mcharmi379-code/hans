@@ -6,11 +6,17 @@
       "language": "German Craftsmanship",
       "businessman": "Since 1926 - 100 years of Grooming excellence"
     },
-      "b2b": {
-        "registrationFormTitle": "B2B Registration Form",
-        "registerHint": "Use the B2B registration form to create a new account.",
-        "openRegistration": "Open registration form"
-      }
+    "b2b": {
+      "registrationFormTitle": "B2B Registration Form",
+      "registerHint": "Use the B2B registration form to create a new account.",
+      "openRegistration": "Open registration form"
+    },
+    "cart": {
+      "benefitsLabel": "Cart benefits",
+      "benefitShipping": "Shipping from €50",
+      "benefitSecurePayment": "Pay securely",
+      "benefitGift": "Gift starting at €75"
+    }
   },
   "header": {
     "accountTitle": "My Account",
@@ -40,6 +46,9 @@
   },
   "newsletter": {
     "subscribeMessage": "Exclusive FREE gifts with your order - only for newsletter subscribers"
+  },
+  "checkout": {
+    "addPromotionSubmit": "Redeem"
   },
   "b2b": {
     "requestAccess": {

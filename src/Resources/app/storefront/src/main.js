@@ -1,5 +1,6 @@
 import './js/custom-horizontal-scroller.js';
 import './js/header-auto-scroll.js';
+import './js/hk-love-slider.js';
 import NavigationFlyoutSubcategoriesPlugin from './js/navigation-flyout-subcategories.plugin';
 import VideoAutoplayPlugin from './js/video-autoplay.plugin';
 import ShowReviewTabPlugin from './js/show-review-tab.plugin';

@@ -1,0 +1,63 @@
+{% sw_extends '@Storefront/storefront/page/checkout/summary.html.twig' %}
+
+{% block page_checkout_summary_inner %}
+    {% sw_include '@Storefront/storefront/page/checkout/summary/summary-position.html.twig' with { summary: summary } %}
+
+    {# Promotions/discounts: render in summary like the reference UI. #}
+    {% for lineItem in summary.lineItems %}
+        {% if lineItem.type == 'promotion' %}
+            <dt class="col-7 checkout-aside-summary-label hk-summary-discount-label">
+                <span class="hk-summary-discount-name">
+                    {{ lineItem.label|trans|sw_sanitize }}
+                </span>
+
+                {% set discountPct = null %}
+                {% if lineItem.payload is defined and lineItem.payload.discountType is defined and lineItem.payload.discountType == 'percentage' %}
+                    {% if lineItem.payload.discountValue is defined %}
+                        {% set discountPct = lineItem.payload.discountValue %}
+                    {% endif %}
+                {% endif %}
+
+                {% if discountPct is not null %}
+                    <span class="hk-summary-discount-badge">{{ '-' ~ discountPct ~ '%' }}</span>
+                {% endif %}
+            </dt>
+            <dd class="col-5 checkout-aside-summary-value hk-summary-discount-value">
+                {{ lineItem.price.totalPrice|currency }}
+            </dd>
+        {% endif %}
+    {% endfor %}
+
+    {% sw_include '@Storefront/storefront/page/checkout/summary/summary-shipping.html.twig' with { summary: summary } %}
+
+    {% if summary.price.taxStatus == 'gross' %}
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-total.html.twig' with {
+            total: total,
+            decimals: decimals
+        } %}
+
+        {% if displayRounded %}
+            {% sw_include '@Storefront/storefront/page/checkout/summary/summary-total-rounded.html.twig' with {
+                summary: summary,
+                decimals: context.totalRounding.decimals
+            } %}
+        {% endif %}
+
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-net.html.twig' with { summary: summary } %}
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-tax.html.twig' with { summary: summary } %}
+    {% else %}
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-net.html.twig' with { summary: summary } %}
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-tax.html.twig' with { summary: summary } %}
+        {% sw_include '@Storefront/storefront/page/checkout/summary/summary-total.html.twig' with {
+            total: total,
+            decimals: decimals
+        } %}
+
+        {% if displayRounded %}
+            {% sw_include '@Storefront/storefront/page/checkout/summary/summary-total-rounded.html.twig' with {
+                summary: summary,
+                decimals: context.totalRounding.decimals
+            } %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
