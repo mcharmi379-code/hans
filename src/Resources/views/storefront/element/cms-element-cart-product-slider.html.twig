@@ -34,11 +34,24 @@
                  data-basket-cross-selling-slider="true"
                  data-basket-cross-selling-slider-options="{{ cartProductSliderOptions|json_encode }}">
 
-                {% if sliderConfig.title.value %}
-                    <div class="cms-element-title">
+                <div class="cms-element-title hk-slider-title-row">
+                    {% if sliderConfig.title.value %}
                         <p class="cms-element-title-paragraph">{{ sliderConfig.title.value }}</p>
-                    </div>
-                {% endif %}
+                    {% endif %}
+                    {% if sliderConfig.navigation.value %}
+                        <div class="product-slider-controls-container">
+                            <div class="base-slider-controls"
+                                 data-basket-cross-selling-slider-controls="true">
+                                <button class="base-slider-controls-prev product-slider-controls-prev{% if sliderConfig.border.value %} has-border{% endif %}">
+                                    {% sw_icon 'arrow-head-left' %}
+                                </button>
+                                <button class="base-slider-controls-next product-slider-controls-next{% if sliderConfig.border.value %} has-border{% endif %}">
+                                    {% sw_icon 'arrow-head-right' %}
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
 
                 <div class="product-slider-inner">
                     <div class="product-slider-container"
@@ -53,20 +66,6 @@
                             </div>
                         {% endfor %}
                     </div>
-
-                    {% if sliderConfig.navigation.value %}
-                        <div class="product-slider-controls-container">
-                            <div class="base-slider-controls"
-                                 data-basket-cross-selling-slider-controls="true">
-                                <button class="base-slider-controls-prev product-slider-controls-prev{% if sliderConfig.border.value %} has-border{% endif %}">
-                                    {% sw_icon 'arrow-head-left' %}
-                                </button>
-                                <button class="base-slider-controls-next product-slider-controls-next{% if sliderConfig.border.value %} has-border{% endif %}">
-                                    {% sw_icon 'arrow-head-right' %}
-                                </button>
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         {% endif %}

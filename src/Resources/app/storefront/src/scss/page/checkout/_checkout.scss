@@ -347,14 +347,12 @@
 	.hk-love-slider__item .product-action {
 		margin-top: auto;
 	}
-	ul.card-body.list-unstyled {
-    background: var(--hk-card);
-}
+	
 	.checkout-product-table.card {
-		border-radius: var(--hk-radius);
+		border-radius: var(--hk-radius) var(--hk-radius) 0 0;
 		border: 1px solid var(--hk-border);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-		background: transparent;
+		background: var(--hk-card);
 	}
 
 	// Keep promotion/discount row visually attached to the table
@@ -363,23 +361,23 @@
 	}
 
 	.checkout-product-table .card-body {
-		padding: 12px;
+		padding: 0;
 
 		@include media-breakpoint-up(md) {
-			padding: 16px;
+			padding: 0;
 		}
 	}
 
 	.checkout-product-table .line-item {
-		border: 1px solid var(--hk-border);
-		border-radius: var(--hk-radius);
-		background: var(--hk-card);
-		padding: 12px;
-		margin-bottom: 12px;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		margin: 0;
+		padding: 14px 12px;
+	}
 
-		&:last-child {
-			margin-bottom: 0;
-		}
+	.checkout-product-table .line-item + .line-item {
+		border-top: 1px solid var(--hk-border);
 	}
 
 	.checkout-product-table .line-item-row {
@@ -597,7 +595,7 @@
 	.hk-cart-discount {
 		padding: 10px 12px;
 		border: 1px solid var(--hk-border);
-		border-radius: var(--hk-radius);
+		border-radius: 0 0 var(--hk-radius) var(--hk-radius);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -815,23 +813,40 @@ body {
 	}
 
 	.cms-element-cart-product-slider {
+		// Make the slider a flex column so we can reorder title/controls/track
 		.base-slider {
 			position: relative;
+			display: flex;
+			flex-direction: column;
 		}
 
-		// Header row: title left, prev/next buttons right
-		.hk-slider-head {
+		// Title + controls on the same row
+		.hk-slider-title-row {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			gap: 12px;
 			margin-bottom: 14px;
+			padding-bottom: 0 !important;
+			order: 1;
 		}
 
-		.hk-slider-head__controls {
-			display: flex;
-			gap: 6px;
-			flex-shrink: 0;
+		// Track comes after title row
+		.product-slider-inner {
+			order: 2;
+			overflow: hidden;
+		}
+
+		// Controls: reset Proxa's absolute positioning, sit inside title row via flex
+		.product-slider-controls-container {
+			order: 1;
+			position: static !important;
+			margin: 0;
+
+			.base-slider-controls {
+				display: flex;
+				gap: 6px;
+				align-items: center;
+			}
 		}
 
 		.product-slider-controls-prev,
@@ -883,9 +898,10 @@ body {
 			}
 		}
 
-		// Clip the sliding track — critical for tns to hide off-screen clones
+		// Clip the sliding track but allow controls to overflow upward
 		.product-slider-inner {
 			overflow: hidden;
+			overflow-x: clip;
 		}
 
 		// Each slide item — tns sets inline width, we just need consistent padding
@@ -1052,4 +1068,10 @@ body {
 		    width: 50%;
 	}
 	// gift icon color handled by .hk-icon-gift rule above
+}
+
+
+.cart-add-product-container {
+    flex: 0 0 75%;
+    max-width: 75%;
 }
