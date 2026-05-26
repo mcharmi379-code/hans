@@ -67,7 +67,6 @@
         <!-- Auto-accept B2B customer group registration only when AcrisTaxCS marked the VAT as valid -->
         <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bVatAutoAcceptSubscriber">
             <argument type="service" id="customer.repository"/>
-            <argument type="service" id="acris_tax_vat_id_validation_log.repository"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
