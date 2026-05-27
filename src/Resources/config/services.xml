@@ -72,6 +72,7 @@
 
         <!-- Units Sold Subscriber -->
         <service id="HansAndKniebesTheme\Storefront\Subscriber\UnitsSoldSubscriber">
+            <argument type="service" id="order_line_item.repository"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
