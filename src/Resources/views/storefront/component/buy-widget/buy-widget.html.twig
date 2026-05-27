@@ -48,5 +48,16 @@
     {{ parent() }}
 {% endblock %}
 
+{% block buy_widget_tax %}
+    {{ parent() }}
+    {% set unitsSold = page.product.extensions.unitsSold %}
+    {% set unitsSoldCount = unitsSold ? unitsSold.get('count') : 0 %}
+    {% if unitsSoldCount >= 5 %}
+        <div class="units-sold-badge">
+            {{ unitsSoldCount }} {{ 'hk.unitsSold'|trans|default('sold') }}
+        </div>
+    {% endif %}
+{% endblock %}
+
 {% block buy_widget_reviews %}
 {% endblock %}

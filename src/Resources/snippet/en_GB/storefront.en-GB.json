@@ -1,4 +1,7 @@
 {
+  "hk": {
+    "unitsSold": "sold"
+  },
   "hansAndKniebes": {
     "topBar": {
       "shipping": "Free Shipping on Orders Above €50 (Only in Germany)",

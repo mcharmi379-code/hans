@@ -1,4 +1,7 @@
 {
+  "hk": {
+    "unitsSold": "verkauft"
+  },
   "hansAndKniebes": {
     "topBar": {
       "shipping": "Kostenloser Versand bei Bestellungen über €50 (Nur in Deutschland)",
