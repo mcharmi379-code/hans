@@ -70,6 +70,28 @@
             <tag name="kernel.event_subscriber"/>
         </service>
 
+        <!-- Sends a password recovery mail to newly-created B2B customers -->
+        <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bCustomerPasswordRecoverySubscriber">
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="customer_recovery.repository"/>
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextRestorer"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="logger"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="HansAndKniebesTheme\Storefront\SalesChannel\B2bResetPasswordRouteDecorator"
+                 decorates="Shopware\Core\Checkout\Customer\SalesChannel\ResetPasswordRoute"
+                 public="true">
+            <argument type="service" id="HansAndKniebesTheme\Storefront\SalesChannel\B2bResetPasswordRouteDecorator.inner"/>
+            <argument type="service" id="customer_recovery.repository"/>
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+        </service>
+
         <!-- Units Sold Subscriber -->
         <service id="HansAndKniebesTheme\Storefront\Subscriber\UnitsSoldSubscriber">
             <argument type="service" id="order_line_item.repository"/>
