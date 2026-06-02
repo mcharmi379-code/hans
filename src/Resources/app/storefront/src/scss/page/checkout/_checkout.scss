@@ -50,7 +50,6 @@
 			@include media-breakpoint-up(lg) {
 				margin-left: 0;
 			}
-			
 		}
 
 		.checkout-aside {
@@ -61,31 +60,6 @@
 		}
 	}
 }
-
-.is-act-confirmpage {
-	@supports selector(:has(*)) {
-		.line-item-row:has(.scg-free-badge) {
-			.line-item-remove {
-				display: none;
-				flex: 0 0 0 !important;
-				width: 0 !important;
-				margin: 0 !important;
-				padding: 0 !important;
-			}
-
-			.line-item-total-price {
-				@include media-breakpoint-up(sm) {
-					@include make-col(6); // was 4 + remove 2
-				}
-
-				@include media-breakpoint-up(md) {
-					@include make-col($infoItemTotalPriceMdSpace + $infoItemRemoveMdSpace);
-				}
-			}
-		}
-	}
-}
-
 // iPad Pro (1024px wide): keep "Free Product" badge aligned inside the product cell on confirm page
 @media (width: 1024px) {
 	.is-act-confirmpage {
@@ -102,6 +76,18 @@
 	}
 }
 
+@media (width: 1032px) and (height: 1376px) {
+	.is-act-confirmpage {
+		.scg-free-badge div {
+			padding: 4px;
+			padding-left: 6px;
+			padding-right: 6px;
+			border-radius: 5px;
+			color: #3aac5d;
+			font-size: 14px;
+		}
+	}
+}
 // new bug solb scss
 
 @media only screen and (max-width: 1024px) {
@@ -387,9 +373,9 @@
 	.hk-love-slider__item .product-action {
 		margin-top: auto;
 	}
-	
+
 	.checkout-product-table.card {
-		border-radius: var(--hk-radius) var(--hk-radius) 0 0;
+	border-radius: var(--hk-radius) var(--hk-radius) 0 0;
 		border: 1px solid var(--hk-border);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 		background: var(--hk-card);
@@ -401,10 +387,10 @@
 	}
 
 	.checkout-product-table .card-body {
-		padding: 0;
+		padding: 12px;
 
 		@include media-breakpoint-up(md) {
-			padding: 0;
+			padding: 16px;
 		}
 	}
 
@@ -415,10 +401,10 @@
 		margin: 0;
 		padding: 14px 12px;
 	}
-
 	.checkout-product-table .line-item + .line-item {
 		border-top: 1px solid var(--hk-border);
 	}
+
 
 	.checkout-product-table .line-item-row {
 		align-items: stretch;
@@ -753,6 +739,7 @@
 		overflow: hidden;
 		background: var(--hk-card);
 	}
+	
 
 	// .checkout-aside-summary {
 		// background: transparent;
@@ -837,12 +824,6 @@ body {
 	}
 }
 
-// Issue 3: fix gift icon — was .svg.hk-icon-gift (invalid) and used fill instead of color
-.hk-icon-gift {
-	color: #B93A58;
-	fill: currentColor;
-}
-
 .checkout-product-slider {
 	// make sure our slider styles also apply when the cross-selling plugin
 	// renders outside of the cart page include wrapper.
@@ -853,14 +834,13 @@ body {
 	}
 
 	.cms-element-cart-product-slider {
-		// Make the slider a flex column so we can reorder title/controls/track
 		.base-slider {
 			position: relative;
 			display: flex;
 			flex-direction: column;
 		}
 
-		// Title + controls on the same row
+		// Header row: title left, prev/next buttons right
 		.hk-slider-title-row {
 			display: flex;
 			align-items: center;
@@ -870,7 +850,6 @@ body {
 			order: 1;
 		}
 
-		// Track comes after title row
 		.product-slider-inner {
 			order: 2;
 			overflow: hidden;
@@ -938,7 +917,7 @@ body {
 			}
 		}
 
-		// Clip the sliding track but allow controls to overflow upward
+		// Clip the sliding track — critical for tns to hide off-screen clones
 		.product-slider-inner {
 			overflow: hidden;
 			overflow-x: clip;
@@ -1093,7 +1072,7 @@ body {
 			}
 		}
 	}
-	.scg-main {
+	.checkout-main .scg-main {
 		border-radius: var(--hk-radius);
 		border: 1px solid var(--hk-border);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
@@ -1109,7 +1088,6 @@ body {
 	}
 	// gift icon color handled by .hk-icon-gift rule above
 }
-
 
 .cart-add-product-container {
     flex: 0 0 75%;

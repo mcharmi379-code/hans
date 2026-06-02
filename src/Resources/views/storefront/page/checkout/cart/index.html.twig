@@ -1,6 +1,6 @@
 {% sw_extends '@ProxaBasketCrossSellingSW6/storefront/page/checkout/cart/index.html.twig' %}
 
-{# ── Suppress Proxa aside slider — we render it inside checkout-main below ── #}
+{# ── Suppress parent cross-sell block — we render slider ourselves below ── #}
 {% block page_checkout_aside_crossselings %}{% endblock %}
 
 {# ── Cart header — render ABOVE both columns (main + aside) ── #}
@@ -157,11 +157,11 @@
         </div>
     </div>
 
-    {# ── Cross-sell slider inside checkout-main ── #}
-    {% if page.cart.extensions.sliderProducts.all and config('ProxaBasketCrossSellingSW6.config.proxaCrossSellingCartActive') %}
+    {# Cross-sell slider — only if plugin is active; use .first not .get(0) to avoid generator rewind #}
+     {% if page.cart.extensions.sliderProducts.all and config('ProxaBasketCrossSellingSW6.config.proxaCrossSellingCartActive') %}
         {% set config = {
             'title': {
-                'value': 'proxa-basket-cross-selling.cart-slider-title'|trans
+                'value':  'proxa-basket-cross-selling.cart-slider-title'|trans
             },
             'border': {
                 'value': false
@@ -181,7 +181,7 @@
             'displayMode': {
                 'value': 'standard'
             },
-            'position': {
+            'position' :{
                 'value': page.cart.extensions.sliderType.get(0)
             },
             'addToCartBtnShow': {
@@ -199,7 +199,6 @@
             </div>
         {% endblock %}
     {% endif %}
-
 {% endblock %}
 
 {# ── Aside actions: CTA → PayPal (via empty stubs, SwagPayPal fills them) → voucher → SSL ── #}

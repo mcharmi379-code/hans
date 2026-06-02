@@ -12,6 +12,7 @@
                     aria-label="{{ 'account.myAccount'|trans|striptags }}"
                     title="{{ 'account.myAccount'|trans|striptags }}">
                 {% sw_icon 'my-account' style {'pack': 'hans','class':'my-account-icon'} %}
+                {{ "header.accountTitle"|trans|sw_sanitize }}
             </button>
         {% endblock %}
 

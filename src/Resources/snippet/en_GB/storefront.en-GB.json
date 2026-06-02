@@ -6,21 +6,12 @@
       "language": "German Craftsmanship",
       "businessman": "Since 1926 - 100 years of Grooming excellence"
     },
-    "b2b": {
-      "registrationFormTitle": "B2B Registration Form",
-      "registerHint": "Use the B2B registration form to create a new account.",
-      "openRegistration": "Open registration form"
-    },
-    "cart": {
-      "benefitsLabel": "Cart benefits",
-      "benefitShipping": "Shipping from €50",
-      "benefitSecurePayment": "Pay securely",
-      "benefitGift": "Gift starting at €75"
+    "aboutUs": {
+      "ctaButton": "Explore our 100 years journey"
     }
   },
   "header": {
-    "accountTitle": "My Account",
-    "businessAccess": "Business Access"
+    "accountTitle": "My Account"
   },
   "footer": {
     "serviceHotline": "<p>For support and advice, please contact:<p><p>E-Mail: <a href='mailto:shop@hanskniebes.de'>shop@hanskniebes.de</a></p>",
@@ -37,9 +28,6 @@
     "reviewLoginRequired": "Login to write review",
     "reviewPurchaseRequired": "Only available for buyers"
   },
-  "review": {
-    "readMore": "... Read more"
-  },
   "account": {
     "newsletterRegisterLabel": "Yes, I would like to subscribe to the newsletter",
     "orderHolidayShippingMessage": "Orders placed between 23.12.2025 – 04.01.2026 will be shipped from 05.01.2026 due to holidays."
@@ -47,19 +35,7 @@
   "newsletter": {
     "subscribeMessage": "Exclusive FREE gifts with your order - only for newsletter subscribers"
   },
-  "checkout": {
+   "checkout": {
     "addPromotionSubmit": "Redeem"
-  },
-  "b2b": {
-    "requestAccess": {
-      "title": "Request Account Access",
-      "button": "Request New Access Form",
-      "company": "Company Name",
-      "contact": "Contact Person",
-      "email": "Email",
-      "vat": "VAT Number",
-      "reference": "Customer Reference Number (optional)",
-      "submit": "Send Request"
-    }
   }
 }

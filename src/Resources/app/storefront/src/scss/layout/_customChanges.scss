@@ -91,6 +91,9 @@
     margin-left: 0px !important;
 }
 
+.product-detail-form-container .col-8 {
+    z-index: 0;
+}
 
 @media (min-width: 1200px) {
     .container-main {
@@ -104,29 +107,4 @@
         gap: 2px;
     }
 
-}
-
-// Review rating content truncation
-.rhweb-product-ratings-content {
-    .rating-content {
-        position: relative;
-
-        .rating-content-text {
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 4px;
-        }
-
-        .rating-read-more {
-            font-size: 13px;
-            color: $sw-color-brand-secondary;
-            text-decoration: none;
-            display: inline-block;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
 }

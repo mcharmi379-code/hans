@@ -54,28 +54,5 @@
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <!-- B2B Access Request Controller -->
-        <service id="HansAndKniebesTheme\Storefront\Controller\B2bAccessRequestController" public="true">
-            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
-            <argument type="service" id="mail_template.repository"/>
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <!-- Auto-accept B2B customer group registration only when AcrisTaxCS marked the VAT as valid -->
-        <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bVatAutoAcceptSubscriber">
-            <argument type="service" id="customer.repository"/>
-            <tag name="kernel.event_subscriber"/>
-        </service>
-
-        <!-- Injects B2B customer group into the login/register page -->
-        <service id="HansAndKniebesTheme\Storefront\Subscriber\B2bLoginPageSubscriber">
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="Shopware\Core\Checkout\Customer\SalesChannel\CustomerGroupRegistrationSettingsRoute"/>
-            <tag name="kernel.event_subscriber"/>
-        </service>
-
     </services>
 </container>

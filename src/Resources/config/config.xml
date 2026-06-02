@@ -19,34 +19,14 @@
             <helpText>These categories will always appear at the end of the category list in the order selected</helpText>
             <helpText lang="de-DE">Diese Kategorien werden immer am Ende der Kategorienliste in der ausgewählten Reihenfolge angezeigt</helpText>
         </component>
-    </card>
-
-    <card>
-        <title>B2B Registration</title>
-
-        <component name="sw-switch-field">
-            <name>enableB2bRegisterEmbed</name>
-            <label>Replace register form with Customer Group Registration link</label>
-            <label lang="de-DE">Registrierungsformular durch Kundengruppen-Registrierungslink ersetzen</label>
-            <defaultValue>false</defaultValue>
-        </component>
 
         <component name="sw-entity-single-select">
-            <name>customerGroupRegistrationId</name>
-            <entity>customer_group</entity>
-            <label>B2B Customer Group Registration Form</label>
-            <label lang="de-DE">B2B Kundengruppen-Registrierungsformular</label>
-            <helpText>Select the customer group whose registration form will be used for B2B sign-ups.</helpText>
-            <helpText lang="de-DE">Wählen Sie die Kundengruppe, deren Registrierungsformular für B2B-Anmeldungen verwendet wird.</helpText>
-        </component>
-
-        <component name="sw-entity-single-select">
-            <name>b2bAccessRequestMailTemplateId</name>
-            <entity>mail_template_type</entity>
-            <label>B2B Access Request Email Template</label>
-            <label lang="de-DE">E-Mail-Vorlage für B2B-Zugriffsanfragen</label>
-            <helpText>Select the email template type used for B2B access request notifications. Falls back to the contact form template if not set.</helpText>
-            <helpText lang="de-DE">Wählen Sie den E-Mail-Vorlagentyp für B2B-Zugriffsanfragen. Verwendet die Kontaktformular-Vorlage als Fallback.</helpText>
+            <name>aboutUsCtaCategoryId</name>
+            <entity>category</entity>
+            <label>About us CTA target category</label>
+            <label lang="de-DE">Zielkategorie für den Über-uns CTA</label>
+            <helpText>Select the category opened by the fixed CTA button on the About us page.</helpText>
+            <helpText lang="de-DE">Wählen Sie die Kategorie, die über den festen CTA-Button auf der Über-uns-Seite geöffnet wird.</helpText>
         </component>
     </card>
 </config>

@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{#
+    Performance — resource hints (audit perf #1, 2026-05-22).
+    Injected right after the viewport meta so they sit near the top of <head>.
+    Rollback: delete this file + bin/console cache:clear.
+#}
+{% block layout_head_meta_tags_viewport %}
+    {{ parent() }}
+
+    {# Google Tag Manager is loaded deferred (3 s) — warm up the connection early
+       so that when it does fire it does not pay DNS+TLS cost on the main thread. #}
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    {# Preload ONLY the body font (Lato Regular, ~28 KB) — used by all above-the-fold
+       text. The heading font (Playfair, 66 KB) is intentionally NOT preloaded: the
+       homepage LCP is an image, and a large high-priority font fetch would compete
+       with it. Plain path on purpose — must match the URL all.css requests
+       byte-for-byte, or the browser fetches the font twice. crossorigin is required. #}
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/bundles/hansandkniebestheme/storefront/assets/fonts/Lato/Lato-Regular.woff2">
+{% endblock %}

@@ -69,3 +69,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ─── CMS Image Fix ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('[CMS Image Fix] Script loaded ✓');
+
+    const images = document.querySelectorAll('img.cms-image');
+    console.log('[CMS Image Fix] Found ' + images.length + ' cms-image(s)');
+
+    images.forEach(function (img, index) {
+        const before = {
+            srcset: img.getAttribute('srcset') || 'none',
+            sizes: img.getAttribute('sizes') || 'none',
+            fallback: img.getAttribute('data-fallback') || 'none',
+        };
+
+        img.removeAttribute('srcset');
+        img.removeAttribute('sizes');
+        img.removeAttribute('data-fallback');
+
+        console.log(
+            '[CMS Image Fix] Image #' + (index + 1) + ' fixed:',
+            '\n  src       :', img.getAttribute('src'),
+            '\n  srcset    :', before.srcset + ' → removed',
+            '\n  sizes     :', before.sizes + ' → removed',
+            '\n  data-fallback:', before.fallback + ' → removed'
+        );
+    });
+
+    console.log('[CMS Image Fix] All done ✓');
+});

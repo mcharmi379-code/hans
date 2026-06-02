@@ -112,7 +112,7 @@
 						margin: 0;
 						> div {
 							width: 100%;
-							position: static;
+							position: static !important;
 							padding: 0;
 							> a {
 								padding: 8px 20px 0 !important;

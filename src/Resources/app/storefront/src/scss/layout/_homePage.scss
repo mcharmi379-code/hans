@@ -5,9 +5,6 @@
 }
 
 .home-banner {
-    .rhweb-cta-fullclick-link {
-        z-index: 9;
-    }
     .col {
         padding: 0;
 
@@ -91,9 +88,6 @@
             }
         }
 
-        // Position CTA button just above the dot navigation
-        // (rule moved to top-level below for correct selector output)
-
         .image-slider-controls-container {
             .base-slider-controls-prev {
                 display: none;
@@ -104,16 +98,6 @@
             }
         }
     }
-}
-
-// CTA banner button: position above dot navigation
-.home-banner .cms-element-rhweb-cta-banner.video-inactive .rhweb-cta-banner-inner.rhweb-cta-fullclick .container-content .rhweb-button {
-    position: absolute !important;
-    bottom: 75px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    z-index: 11;
 }
 
 // cat slider style start

@@ -6,21 +6,12 @@
       "language": "Deutsche Handwerkskunst",
       "businessman": "Seit 1926 - 100 Jahre Spitzenleistungen in der Körperpflege"
     },
-    "b2b": {
-      "registrationFormTitle": "B2B-Anmeldeformular",
-      "registerHint": "Nutzen Sie das B2B-Registrierungsformular, um ein neues Konto zu erstellen.",
-      "openRegistration": "Anmeldeformular öffnen"
-    },
-    "cart": {
-      "benefitsLabel": "Vorteile im Warenkorb",
-      "benefitShipping": "Versand ab 50 €",
-      "benefitSecurePayment": "Sicher bezahlen",
-      "benefitGift": "Geschenk ab 75 €"
+    "aboutUs": {
+      "ctaButton": "Entdecken Sie unsere 100-jährige Geschichte"
     }
   },
   "header": {
-    "accountTitle": "Mein Konto",
-    "businessAccess": "Zugang für Unternehmen"
+    "accountTitle": "Mein Konto"
   },
   "footer": {
     "serviceHotline": "<p>Unterstützung und Beratung unter:<p><p>E-Mail: <a href='mailto:shop@hanskniebes.de'>shop@hanskniebes.de</a></p>",
@@ -37,9 +28,6 @@
     "reviewLoginRequired": "Anmelden um zu bewerten",
     "reviewPurchaseRequired": "Nur für Käufer verfügbar"
   },
-  "review": {
-    "readMore": "... Weiterlesen"
-  },
   "account": {
     "newsletterRegisterLabel": "Ja, ich möchte den Newsletter abonnieren",
     "orderHolidayShippingMessage": "Bestellungen, die zwischen dem 23.12.2025 und dem 04.01.2026 aufgegeben werden, werden aufgrund der Feiertage ab dem 05.01.2026 versandt."
@@ -49,17 +37,5 @@
   },
   "checkout": {
     "addPromotionSubmit": "Einlösen"
-  },
-  "b2b": {
-    "requestAccess": {
-      "title": "Kontozugang anfragen",
-      "button": "Neues Zugriffsformular anfordern",
-      "company": "Firmenname",
-      "contact": "Ansprechpartner",
-      "email": "E-Mail",
-      "vat": "USt-IdNr.",
-      "reference": "Kundennummer (optional)",
-      "submit": "Anfrage senden"
-    }
   }
 }
