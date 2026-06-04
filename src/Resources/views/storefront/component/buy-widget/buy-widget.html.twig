@@ -50,3 +50,17 @@
 
 {% block buy_widget_reviews %}
 {% endblock %}
+
+{% block buy_widget_ordernumber_container %}
+    {{ parent() }}
+
+    {% set catalog = page.extensions.hkB2bCatalog ?? hkB2bCatalog ?? null %}
+    {% if catalog and catalog.isEligible and catalog.categoryId %}
+        <div class="hk-b2b-catalog-cta mt-2">
+            <a href="{{ seoUrl('frontend.navigation.page', { navigationId: catalog.categoryId }) }}"
+               class="hk-catalog-cta-link btn btn-outline-primary">
+                {{ 'hk.b2bCatalogCta'|trans|sw_sanitize }}
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

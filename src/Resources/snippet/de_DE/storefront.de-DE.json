@@ -37,5 +37,8 @@
   },
   "checkout": {
     "addPromotionSubmit": "Einlösen"
+  },
+  "b2bCta": {
+    "b2bCatalogCta": "Vollständigen Katalog anzeigen"
   }
 }

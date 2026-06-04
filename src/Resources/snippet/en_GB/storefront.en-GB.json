@@ -37,5 +37,8 @@
   },
    "checkout": {
     "addPromotionSubmit": "Redeem"
+  },
+  "b2bCta": {
+    "b2bCatalogCta": "View Full Catalog"
   }
 }

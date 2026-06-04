@@ -5,13 +5,19 @@ namespace HansAndKniebesTheme\Storefront\Page;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\Struct\ArrayStruct;
+use Shopware\Core\Framework\Context;
+use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
+use Shopware\Storefront\Event\StorefrontRenderEvent;
 use Shopware\Storefront\Page\Navigation\NavigationPageLoadedEvent;
 use Shopware\Storefront\Pagelet\Header\HeaderPageletLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class categoryNavigationSubscriber implements EventSubscriberInterface
 {
+    private const B2B_FLIPBOOK_CATEGORY_NAME = 'B2BPDFFlipbook';
+
     private EntityRepository $categoryRepository;
     private SystemConfigService $systemConfigService;
 
@@ -29,11 +35,15 @@ final class categoryNavigationSubscriber implements EventSubscriberInterface
         return [
             NavigationPageLoadedEvent::class => 'NavigationPageLoaded',
             HeaderPageletLoadedEvent::class => 'onHeaderPageLoaded',
+            StorefrontRenderEvent::class => 'onStorefrontRender',
         ];
     }
 
     public function NavigationPageLoaded(NavigationPageLoadedEvent $event): void
     {
+        $catalogData = $this->getB2bCatalogData($event->getSalesChannelContext());
+        $event->getPage()->addExtension('hkB2bCatalog', new ArrayStruct($catalogData));
+
         $salesChannelId = $event->getSalesChannelContext()->getSalesChannel()->getId();
         $categoryConfig = $this->systemConfigService->get('HansAndKniebesTheme.config.Category', $salesChannelId);
         if ($categoryConfig) {
@@ -51,6 +61,14 @@ final class categoryNavigationSubscriber implements EventSubscriberInterface
                 $page->addExtension('headerCategories', $child);
             }
         }
+    }
+
+    public function onStorefrontRender(StorefrontRenderEvent $event): void
+    {
+        $event->setParameter(
+            'hkB2bCatalog',
+            $this->getB2bCatalogData($event->getSalesChannelContext())
+        );
     }
     
     public function onHeaderPageLoaded(HeaderPageletLoadedEvent $event): void
@@ -120,5 +138,30 @@ final class categoryNavigationSubscriber implements EventSubscriberInterface
         foreach ($itemsToMove as $item) {
             $treeItems[] = $item;
         }
+    }
+
+    private function getB2bCatalogData(SalesChannelContext $salesChannelContext): array
+    {
+        $customer = $salesChannelContext->getCustomer();
+        $currentCustomerGroupId = $salesChannelContext->getCurrentCustomerGroup()->getId();
+        $defaultCustomerGroupId = $salesChannelContext->getSalesChannel()->getCustomerGroupId();
+        $categoryId = $this->getB2bFlipbookCategoryId($salesChannelContext->getContext());
+
+        return [
+            'categoryId' => $categoryId,
+            'isEligible' => $customer !== null
+                && !$customer->getGuest()
+                && $currentCustomerGroupId !== $defaultCustomerGroupId
+                && $categoryId !== null,
+        ];
+    }
+
+    private function getB2bFlipbookCategoryId(Context $context): ?string
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('translations.name', self::B2B_FLIPBOOK_CATEGORY_NAME));
+        $criteria->setLimit(1);
+
+        return $this->categoryRepository->searchIds($criteria, $context)->firstId();
     }
 }

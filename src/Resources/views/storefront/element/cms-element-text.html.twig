@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-text.html.twig' %}
+
+{% block element_text_inner %}
+    {{ parent() }}
+
+    {% set catalog = page.extensions.hkB2bCatalog ?? hkB2bCatalog ?? null %}
+    {% set categoryDescription = page.category.translated.description ?? null %}
+    {% set isCategoryDescription = categoryDescription
+        and element.data.content|striptags|trim == categoryDescription|striptags|trim %}
+
+    {% if page.category is defined
+        and isCategoryDescription
+        and catalog
+        and catalog.isEligible
+        and catalog.categoryId %}
+        <div class="hk-b2b-catalog-cta mt-3">
+            <a href="{{ seoUrl('frontend.navigation.page', { navigationId: catalog.categoryId }) }}"
+               class="hk-catalog-cta-link btn btn-outline-primary">
+                {{ 'b2bCta.b2bCatalogCta'|trans|sw_sanitize }}
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
