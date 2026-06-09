@@ -40,5 +40,25 @@
   },
   "b2bCta": {
     "b2bCatalogCta": "Vollständigen Katalog anzeigen"
+  },
+  "categoryHover": {
+    "nail-care-instruments": "Präzisionsgefertigte Instrumente für makellose Nagelpflege.",
+    "nagelpflegeinstrumente": "Präzisionsgefertigte Instrumente für makellose Nagelpflege.",
+    "skin-care-instruments": "Hochwertige Instrumente für effektive Hautpflege-Routinen.",
+    "hautpflegeinstrumente": "Hochwertige Instrumente für effektive Hautpflege-Routinen.",
+    "small-leather-goods": "Elegante Lederaccessoires für den täglichen Gebrauch.",
+    "kleinlederwaren": "Elegante Lederaccessoires für den täglichen Gebrauch.",
+    "beard-and-shaving": "Raffinierte Pflegeinstrumente für den modernen Herrn.",
+    "bart-und-rasur": "Raffinierte Pflegeinstrumente für den modernen Herrn.",
+    "household-scissors": "Außergewöhnliche Schneidpräzision für alltägliche Aufgaben.",
+    "haushaltsscheren": "Außergewöhnliche Schneidpräzision für alltägliche Aufgaben.",
+    "offers": "Entdecken Sie Sonderangebote und exklusive Ersparnisse auf ausgewählte Produkte.",
+    "angebote": "Entdecken Sie Sonderangebote und exklusive Ersparnisse auf ausgewählte Produkte.",
+    "genuine-horn-products": "Handgefertigte Stücke aus echtem Horn.",
+    "echt-horn-produkte": "Handgefertigte Stücke aus echtem Horn.",
+    "manicure-cases": "Komplette Maniküre-Sets in stilvollen Etuis für zu Hause und unterwegs.",
+    "manicure-etuis": "Komplette Maniküre-Sets in stilvollen Etuis für zu Hause und unterwegs.",
+    "toiletry-bags": "Stilvolle Reisebegleiter für organisierte Pflege.",
+    "kulturtaschen": "Stilvolle Reisebegleiter für organisierte Pflege."
   }
 }

@@ -40,5 +40,25 @@
   },
   "b2bCta": {
     "b2bCatalogCta": "View Full Catalog"
+  },
+  "categoryHover": {
+    "nail-care-instruments": "Precision-crafted instruments for impeccable nail care.",
+    "nagelpflegeinstrumente": "Precision-crafted instruments for impeccable nail care.",
+    "skin-care-instruments": "High-quality instruments for effective skincare routines.",
+    "hautpflegeinstrumente": "High-quality instruments for effective skincare routines.",
+    "small-leather-goods": "Elegant leather accessories crafted for everyday use.",
+    "kleinlederwaren": "Elegant leather accessories crafted for everyday use.",
+    "beard-and-shaving": "Refined grooming tools for the modern gentleman.",
+    "bart-und-rasur": "Refined grooming tools for the modern gentleman.",
+    "household-scissors": "Exceptional cutting precision for everyday tasks.",
+    "haushaltsscheren": "Exceptional cutting precision for everyday tasks.",
+    "offers": "Discover special deals and exclusive savings on selected products.",
+    "angebote": "Discover special deals and exclusive savings on selected products.",
+    "genuine-horn-products": "Handcrafted pieces made from genuine horn.",
+    "echt-horn-produkte": "Handcrafted pieces made from genuine horn.",
+    "manicure-cases": "Complete manicure kits in stylish cases for home and travel.",
+    "manicure-etuis": "Complete manicure kits in stylish cases for home and travel.",
+    "toiletry-bags": "Sophisticated travel companions for organized grooming.",
+    "kulturtaschen": "Sophisticated travel companions for organized grooming."
   }
 }
